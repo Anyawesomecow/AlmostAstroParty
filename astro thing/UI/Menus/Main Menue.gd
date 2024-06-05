@@ -12,4 +12,4 @@ func _process(delta):
 
 # starts game
 func _on_start_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://leval.tscn")
