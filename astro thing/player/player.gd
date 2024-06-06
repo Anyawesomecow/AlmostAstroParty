@@ -2,9 +2,8 @@ extends Node2D
 var velocity = Vector2(0, 0)
 var speed = 200
 var angle = 0.0
-var turnDirection = true
+var turnDirection = 1
 var turnConstant = PI/45
-@onready var player = $"."
 @onready var sprite = $Sprite2D
 #var turn = 0.0
 
@@ -14,7 +13,7 @@ func _input(event):
 
 func _physics_process(delta):
 	if Input.is_action_pressed("turn"):
-		angle += turnConstant * (1 if turnDirection else -1)
+		angle += turnConstant * turnDirection
 		
 	position += velocity * delta
 	velocity.x = lerp(velocity.x, cos(angle) * speed, delta)
