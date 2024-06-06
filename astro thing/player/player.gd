@@ -1,7 +1,6 @@
 extends Node2D
 var velocity = Vector2(0, 0)
 var speed = 200
-var angle = 0.0
 var turnDirection = 1
 var turnConstant = PI
 @onready var sprite = $Sprite2D
