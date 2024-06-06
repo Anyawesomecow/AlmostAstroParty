@@ -15,4 +15,4 @@ func _physics_process(delta):
 		rotation += turnConstant * turnDirection * delta
 		
 	position += velocity * delta
-	velocity = Vector2(lerp(velocity.x, cos(rotation) * speed, delta), lerp(velocity.y, sin(rotation) * speed, delta))
+	velocity = Vector2(lerp(velocity.x, cos(rotation) * speed, delta * .6), lerp(velocity.y, sin(rotation) * speed, delta * .6))
