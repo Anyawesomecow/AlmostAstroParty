@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxsa1l6upmplg"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_cqx27"]
-[ext_resource type="Texture2D" uid="uid://dvylwiew11vce" path="res://player/Purple Ship.png" id="2_mprep"]
+[ext_resource type="Texture2D" uid="uid://c45mwap0tefi1" path="res://player/purple ship long.png" id="2_x1td5"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_cqx27")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
-texture = ExtResource("2_mprep")
+texture = ExtResource("2_x1td5")

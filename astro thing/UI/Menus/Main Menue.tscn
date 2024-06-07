@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0yxpjlkwwg6p"]
+[gd_scene load_steps=3 format=3 uid="uid://b0yxpjlkwwg6p"]
 
 [ext_resource type="Script" path="res://UI/Menus/Main Menue.gd" id="1_dn3mb"]
+[ext_resource type="Theme" uid="uid://dqt8ckud00u6" path="res://UI/new_theme.tres" id="2_wlpdl"]
 
 [node name="MainMenue" type="Control"]
 layout_mode = 3
@@ -27,6 +28,7 @@ text = "GAME NAME"
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_wlpdl")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
 layout_mode = 2
