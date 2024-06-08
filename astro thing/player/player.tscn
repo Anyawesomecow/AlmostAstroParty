@@ -1,11 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxsa1l6upmplg"]
+[gd_scene load_steps=6 format=3 uid="uid://dxsa1l6upmplg"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_cqx27"]
 [ext_resource type="Texture2D" uid="uid://c45mwap0tefi1" path="res://player/purple ship long.png" id="2_x1td5"]
 
-[node name="Player" type="Node2D"]
+[sub_resource type="Curve" id="Curve_bb2o5"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.994382, 200), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_cwlqt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s6o2x"]
+radius = 9.0
+
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cqx27")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 20
+emission_shape = 1
+emission_sphere_radius = 16.51
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.3
+initial_velocity_max = 30.3
+angular_velocity_min = 14.55
+angular_velocity_max = 58.18
+radial_accel_curve = SubResource("Curve_bb2o5")
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+color = Color(1, 0, 1, 1)
+color_ramp = SubResource("Gradient_cwlqt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
 texture = ExtResource("2_x1td5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s6o2x")
+
+[node name="dashTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="dashCooldown" type="Timer" parent="."]
+wait_time = 0.577
+one_shot = true

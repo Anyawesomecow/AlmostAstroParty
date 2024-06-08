@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx0812o0vjn0j"]
+
+[ext_resource type="Texture2D" uid="uid://bolekku2arck" path="res://UI/textures/weird Kam picture.png" id="1_qkmdc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkttf"]
+size = Vector2(111, 244)
+
+[node name="Wall1" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(46.5, 122)
+shape = SubResource("RectangleShape2D_nkttf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(46, 123)
+scale = Vector2(3.53125, 7.6875)
+texture = ExtResource("1_qkmdc")
