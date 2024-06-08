@@ -10,7 +10,7 @@ var turnConstant = PI
 @onready var dashCooldown = $dashCooldown
 
 func dash():
-	rotation = angleBefore + PI/2
+	rotation = angleBefore + PI/2.5
 	velocity = Vector2(150 * cos(rotation), 150 * sin(rotation))
 	dashCooldown.start()
 
