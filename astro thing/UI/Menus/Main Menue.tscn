@@ -38,18 +38,33 @@ layout_mode = 2
 
 [node name="Start" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 text = "BEGAIN"
 
 [node name="Join" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../host")
+focus_neighbor_bottom = NodePath("../settings")
+focus_next = NodePath("../settings")
+focus_previous = NodePath("../host")
 text = "Join Game"
 
 [node name="settings" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Join")
+focus_neighbor_bottom = NodePath("../host")
+focus_next = NodePath("../host")
+focus_previous = NodePath("../Join")
 text = "Settings"
 
 [node name="host" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../settings")
+focus_neighbor_bottom = NodePath("../Join")
+focus_next = NodePath("../Join")
+focus_previous = NodePath("../settings")
+toggle_mode = true
 text = "Host"
 
 [connection signal="pressed" from="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]

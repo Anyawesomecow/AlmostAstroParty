@@ -6,6 +6,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	startButton.grab_focus()
 	joinButton.hide()
 	settingsButton.hide()
 	hostButton.hide()
@@ -19,6 +20,7 @@ func _process(delta):
 func _on_start_pressed():
 	startButton.hide()
 	joinButton.show()
+	joinButton.grab_focus()
 	settingsButton.show()
 	hostButton.show()
 
