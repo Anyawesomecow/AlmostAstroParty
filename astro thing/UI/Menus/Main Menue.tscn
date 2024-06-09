@@ -1,7 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0yxpjlkwwg6p"]
+[gd_scene load_steps=13 format=3 uid="uid://b0yxpjlkwwg6p"]
 
 [ext_resource type="Script" path="res://UI/Menus/Main Menue.gd" id="1_dn3mb"]
 [ext_resource type="Theme" uid="uid://dqt8ckud00u6" path="res://UI/new_theme.tres" id="2_wlpdl"]
+
+[sub_resource type="SystemFont" id="SystemFont_kbhii"]
+font_names = PackedStringArray("Minecraft")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u8ufb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2e0os"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3yh73"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r7uug"]
+
+[sub_resource type="SystemFont" id="SystemFont_hnyk5"]
+font_names = PackedStringArray("Minecraft")
+
+[sub_resource type="Theme" id="Theme_t5wf3"]
+default_font = SubResource("SystemFont_hnyk5")
+Button/colors/font_color = Color(0.885149, 0.325414, 0, 1)
+Button/colors/font_focus_color = Color(0.885149, 0.325414, 0, 1)
+Button/colors/font_hover_color = Color(1, 0.456481, 0.231551, 1)
+Button/fonts/font = SubResource("SystemFont_kbhii")
+Button/styles/disabled = null
+Button/styles/focus = SubResource("StyleBoxEmpty_u8ufb")
+Button/styles/hover = SubResource("StyleBoxEmpty_2e0os")
+Button/styles/normal = SubResource("StyleBoxEmpty_3yh73")
+Button/styles/pressed = SubResource("StyleBoxEmpty_r7uug")
+
+[sub_resource type="Theme" id="Theme_8itvu"]
+
+[sub_resource type="Theme" id="Theme_75vn1"]
+
+[sub_resource type="Theme" id="Theme_wqa06"]
 
 [node name="MainMenue" type="Control"]
 layout_mode = 3
@@ -10,6 +42,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_t5wf3")
 script = ExtResource("1_dn3mb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -24,6 +57,9 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 50
 text = "GAME NAME"
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
@@ -40,6 +76,7 @@ layout_mode = 2
 layout_mode = 2
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
+theme = SubResource("Theme_8itvu")
 text = "BEGAIN"
 
 [node name="Join" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -48,6 +85,7 @@ focus_neighbor_top = NodePath("../host")
 focus_neighbor_bottom = NodePath("../settings")
 focus_next = NodePath("../settings")
 focus_previous = NodePath("../host")
+theme = SubResource("Theme_75vn1")
 text = "Join Game"
 
 [node name="settings" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -56,6 +94,7 @@ focus_neighbor_top = NodePath("../Join")
 focus_neighbor_bottom = NodePath("../host")
 focus_next = NodePath("../host")
 focus_previous = NodePath("../Join")
+theme = SubResource("Theme_wqa06")
 text = "Settings"
 
 [node name="host" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
