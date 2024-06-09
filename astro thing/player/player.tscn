@@ -32,7 +32,7 @@ angular_velocity_max = 58.18
 radial_accel_curve = SubResource("Curve_bb2o5")
 scale_amount_min = 3.0
 scale_amount_max = 3.0
-color = Color(1, 0, 1, 1)
+color = Color(1, 0.117647, 0, 1)
 color_ramp = SubResource("Gradient_cwlqt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -49,3 +49,8 @@ one_shot = true
 [node name="dashCooldown" type="Timer" parent="."]
 wait_time = 0.577
 one_shot = true
+
+[node name="amorecharge" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="amorecharge" to="." method="_on_amorecharge_timeout"]

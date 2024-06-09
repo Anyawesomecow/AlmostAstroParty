@@ -57,5 +57,6 @@ esc={
 [rendering]
 
 occlusion_culling/bvh_build_quality=0
+textures/canvas_textures/default_texture_filter=0
 anti_aliasing/screen_space_roughness_limiter/amount=4.0
 anti_aliasing/screen_space_roughness_limiter/limit=1.0

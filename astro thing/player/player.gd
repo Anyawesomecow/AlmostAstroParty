@@ -4,12 +4,13 @@ var angleBefore = 0
 var speed = 200
 var turnDirection = 1
 var turnConstant = PI
+var amo = 3
 @onready var SIZE = get_viewport_rect().size + Vector2(100, 100)
 @onready var sprite = $Sprite2D
 @onready var dashTimer = $dashTimer
 @onready var dashCooldown = $dashCooldown
 
-signal shooting
+
 
 func dash():
 	rotation = angleBefore + PI/2.5
@@ -17,9 +18,10 @@ func dash():
 	dashCooldown.start()
 
 func _input(event):
-	if event.is_action_pressed("shoot"):
+	if event.is_action_pressed("shoot") and amo > 0:
 		print("florp")
-		emit_signal("shooting")
+		Events.emit_signal("shooting")
+		amo -= 1
 	
 	if event.is_action_pressed("esc"):
 		get_tree().quit()
@@ -43,3 +45,8 @@ func _physics_process(delta):
 		
 	position = Vector2(wrapf(position.x, 0, SIZE.x), wrapf(position.y, 0, SIZE.y))
 	velocity = Vector2(lerp(velocity.x, cos(rotation) * speed, delta * .6), lerp(velocity.y, sin(rotation) * speed, delta * .6))
+
+
+func _on_amorecharge_timeout():
+	if amo < 3:
+		amo += 1
