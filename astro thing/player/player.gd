@@ -9,12 +9,18 @@ var turnConstant = PI
 @onready var dashTimer = $dashTimer
 @onready var dashCooldown = $dashCooldown
 
+signal shooting
+
 func dash():
 	rotation = angleBefore + PI/2.5
 	velocity = Vector2(150 * cos(rotation), 150 * sin(rotation))
 	dashCooldown.start()
 
 func _input(event):
+	if event.is_action_pressed("shoot"):
+		print("florp")
+		emit_signal("shooting")
+	
 	if event.is_action_pressed("esc"):
 		get_tree().quit()
 		
