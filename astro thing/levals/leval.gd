@@ -12,7 +12,10 @@ func _ready():
 func _process(delta):
 	pass
 
+
+
 func shoot():
 	var BulletReady = bullet.instantiate()
 	BulletReady.position = player.position
-	leval.add_child(BulletReady)
+	BulletReady.rotation = player.rotation
+	$bullet_holder.add_child(BulletReady)

@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://d25ljayjqylli"]
 
 [ext_resource type="PackedScene" uid="uid://dxsa1l6upmplg" path="res://player/player.tscn" id="1_6lxp3"]
-[ext_resource type="Script" path="res://leval.gd" id="1_j454r"]
+[ext_resource type="Script" path="res://levals/leval.gd" id="1_j454r"]
 [ext_resource type="PackedScene" uid="uid://bx0812o0vjn0j" path="res://colidablals/wall 1.tscn" id="2_nmrh1"]
 
-[node name="leval" type="Node2D"]
+[node name="leval_debug" type="Node2D"]
 script = ExtResource("1_j454r")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -16,3 +16,5 @@ position = Vector2(116, 110)
 
 [node name="Player" parent="." instance=ExtResource("1_6lxp3")]
 position = Vector2(292, 198)
+
+[node name="bullet_holder" type="Node2D" parent="."]

@@ -26,7 +26,7 @@ func _on_start_pressed():
 
 
 func _on_join_pressed():
-	get_tree().change_scene_to_file("res://leval.tscn")
+	get_tree().change_scene_to_file("res://levals/leval.tscn")
 
 
 func _on_settings_pressed():
