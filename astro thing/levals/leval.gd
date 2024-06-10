@@ -16,6 +16,6 @@ func _process(delta):
 
 func shoot():
 	var BulletReady = bullet.instantiate()
-	BulletReady.position = player.position
+	BulletReady.position = player.position + Vector2(cos(player.rotation) * 20, sin(player.rotation) * 20)
 	BulletReady.rotation = player.rotation
 	$bullet_holder.add_child(BulletReady)
