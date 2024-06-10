@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4addnpyiob5o"
-path="res://.godot/imported/purple ship long.png-8da973f621cabd5efa16a4d372e5142d.ctex"
+uid="uid://wucyojwylb7k"
+path="res://.godot/imported/purple ship short.png-40eb37b1f40a5945da0afee270077fb1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/purple ship long.png"
-dest_files=["res://.godot/imported/purple ship long.png-8da973f621cabd5efa16a4d372e5142d.ctex"]
+source_file="res://player/purple ship short.png"
+dest_files=["res://.godot/imported/purple ship short.png-40eb37b1f40a5945da0afee270077fb1.ctex"]
 
 [params]
 
