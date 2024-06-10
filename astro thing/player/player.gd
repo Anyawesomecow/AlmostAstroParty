@@ -18,7 +18,7 @@ var defaultBurtAmountBurst = 100
 @onready var dashCooldown = $dashCooldown
 
 
-func _ready():
+func _ready(): # onreadythings
 	$noodle.hide()
 	$ship.show()
 	shipParticals1.emitting = true
@@ -30,13 +30,13 @@ func _ready():
 	shipParticals3.amount = defaultBurtAmountBurst
 	shipParticals4.amount = defaultBurtAmountBurst
 
-func dash():
+func dash(): #dash
 	boostVisuals()
 	rotation = angleBefore + PI/2.5
 	velocity = Vector2(150 * cos(rotation), 150 * sin(rotation))
 	dashCooldown.start()
 
-func boostVisuals():
+func boostVisuals(): # change particals when boosting
 	shipParticals1.emitting = false
 	shipParticals2.emitting = false
 	shipParticals3.emitting = true
@@ -44,7 +44,7 @@ func boostVisuals():
 
 
 
-func _on_denoodling_timeout():
+func _on_denoodling_timeout(): # un noodling
 	$ship.show()
 	$noodle.hide()
 	
@@ -53,7 +53,7 @@ func _on_denoodling_timeout():
 
 	is_noodle = false
 
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(area): # getting hit stuff
 	if is_noodle == true:
 		queue_free()
 	else:
@@ -64,21 +64,19 @@ func _on_area_2d_area_entered(area):
 	$ship.hide()
 	$noodle.show()
 
-func _on_dash_cooldown_timeout():
+func _on_dash_cooldown_timeout(): # puts partcals back to normal after dash
 	shipParticals1.emitting = true
 	shipParticals2.emitting = true
 	shipParticals3.emitting = false
 	shipParticals4.emitting = false
 
-func _on_amorecharge_timeout():
+func _on_amorecharge_timeout():# adds amo
 	amo += 1
-	print(amo)
 
 func _input(event):
 	if amo < 3 and $amorecharge.time_left == 0:
 		$amorecharge.start()
 		
-		print(amo)
 	
 	if event.is_action_pressed("shoot") and amo > 0 and is_noodle == false:
 		Events.emit_signal("shooting")

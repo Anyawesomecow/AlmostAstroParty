@@ -18,3 +18,8 @@ position = Vector2(116, 110)
 position = Vector2(292, 198)
 
 [node name="bullet_holder" type="Node2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
