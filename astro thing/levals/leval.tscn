@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d25ljayjqylli"]
+[gd_scene load_steps=5 format=3 uid="uid://d25ljayjqylli"]
 
 [ext_resource type="PackedScene" uid="uid://dxsa1l6upmplg" path="res://player/player.tscn" id="1_6lxp3"]
 [ext_resource type="Script" path="res://levals/leval.gd" id="1_j454r"]
 [ext_resource type="PackedScene" uid="uid://bx0812o0vjn0j" path="res://colidablals/wall 1.tscn" id="2_nmrh1"]
+[ext_resource type="Texture2D" uid="uid://btnt1on62x4dq" path="res://levals/textures/background for wallpaper.png" id="4_2jium"]
 
 [node name="leval_debug" type="Node2D"]
 script = ExtResource("1_j454r")
@@ -22,4 +23,8 @@ position = Vector2(292, 198)
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-texture_filter = 1
+position = Vector2(600, 100)
+motion_scale = Vector2(5, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("4_2jium")
