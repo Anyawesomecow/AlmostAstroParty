@@ -4,6 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://c45mwap0tefi1" path="res://player/purple ship long.png" id="2_x1td5"]
 [ext_resource type="Texture2D" uid="uid://5vdfw1i5xm3o" path="res://player/kai big face.png" id="3_xc7iu"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_s6o2x"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q8b01"]
+
 [sub_resource type="Curve" id="Curve_bb2o5"]
 min_value = -200.0
 max_value = 200.0
@@ -13,47 +18,8 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_cwlqt"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_s6o2x"]
-radius = 9.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_q8b01"]
-
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cqx27")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(-12, 5)
-amount = 20
-emission_shape = 3
-emission_rect_extents = Vector2(1, 1)
-direction = Vector2(-1, 0)
-gravity = Vector2(0, 0)
-initial_velocity_min = 20.2
-initial_velocity_max = 30.3
-angular_velocity_min = 14.55
-angular_velocity_max = 58.18
-radial_accel_curve = SubResource("Curve_bb2o5")
-scale_amount_min = 3.0
-scale_amount_max = 3.0
-color = Color(1, 0.117647, 0, 1)
-color_ramp = SubResource("Gradient_cwlqt")
-
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
-position = Vector2(-12, -5)
-amount = 20
-emission_shape = 3
-emission_rect_extents = Vector2(1, 1)
-direction = Vector2(-1, 0)
-gravity = Vector2(0, 0)
-initial_velocity_min = 20.2
-initial_velocity_max = 30.3
-angular_velocity_min = 14.55
-angular_velocity_max = 58.18
-radial_accel_curve = SubResource("Curve_bb2o5")
-scale_amount_min = 3.0
-scale_amount_max = 3.0
-color = Color(1, 0.117647, 0, 1)
-color_ramp = SubResource("Gradient_cwlqt")
 
 [node name="ship" type="Sprite2D" parent="."]
 rotation = 1.5708
@@ -81,7 +47,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="denoodling" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -91,6 +57,79 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_q8b01")
 
+[node name="particals_ship" type="Node2D" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="particals_ship"]
+position = Vector2(-12, 5)
+amount = 20
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+direction = Vector2(-1, 0)
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.2
+initial_velocity_max = 30.3
+angular_velocity_min = 14.55
+angular_velocity_max = 58.18
+radial_accel_curve = SubResource("Curve_bb2o5")
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+color = Color(1, 0.117647, 0, 1)
+color_ramp = SubResource("Gradient_cwlqt")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="particals_ship"]
+position = Vector2(-12, -5)
+amount = 20
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+direction = Vector2(-1, 0)
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.2
+initial_velocity_max = 30.3
+angular_velocity_min = 14.55
+angular_velocity_max = 58.18
+radial_accel_curve = SubResource("Curve_bb2o5")
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+color = Color(1, 0.117647, 0, 1)
+color_ramp = SubResource("Gradient_cwlqt")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="particals_ship"]
+position = Vector2(-12, 5)
+amount = 20
+explosiveness = 0.18
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+direction = Vector2(-1, 0)
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.2
+initial_velocity_max = 30.3
+angular_velocity_min = 14.55
+angular_velocity_max = 58.18
+radial_accel_curve = SubResource("Curve_bb2o5")
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+color = Color(1, 0.360784, 0, 1)
+color_ramp = SubResource("Gradient_cwlqt")
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="particals_ship"]
+position = Vector2(-12, -5)
+amount = 20
+explosiveness = 0.35
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+direction = Vector2(-1, 0)
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.2
+initial_velocity_max = 30.3
+angular_velocity_min = 14.55
+angular_velocity_max = 58.18
+radial_accel_curve = SubResource("Curve_bb2o5")
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+color = Color(1, 0.360784, 0, 1)
+color_ramp = SubResource("Gradient_cwlqt")
+
+[connection signal="timeout" from="dashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="amorecharge" to="." method="_on_amorecharge_timeout"]
 [connection signal="timeout" from="denoodling" to="." method="_on_denoodling_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
