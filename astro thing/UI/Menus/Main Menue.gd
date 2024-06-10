@@ -4,20 +4,16 @@ extends Control
 @onready var settingsButton = $VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/settings
 @onready var hostButton = $VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/host
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+
+func _ready(): # Called when the node enters the scene tree for the first time. lets you use tab and enter in menue
 	startButton.grab_focus()
 	joinButton.hide()
 	settingsButton.hide()
 	hostButton.hide()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
-# starts game
-func _on_start_pressed():
+func _on_start_pressed():# starts game
 	startButton.hide()
 	joinButton.show()
 	joinButton.grab_focus()
