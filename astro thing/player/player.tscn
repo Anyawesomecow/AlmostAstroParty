@@ -116,7 +116,7 @@ one_shot = true
 
 [node name="amorecharge" type="Timer" parent="."]
 wait_time = 2.0
-autostart = true
+one_shot = true
 
 [node name="denoodling" type="Timer" parent="."]
 wait_time = 5.0

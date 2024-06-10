@@ -42,9 +42,7 @@ func boostVisuals():
 	shipParticals3.emitting = true
 	shipParticals4.emitting = true
 
-func _on_amorecharge_timeout():
-	if amo < 3:
-		amo += 1
+
 
 func _on_denoodling_timeout():
 	$ship.show()
@@ -72,7 +70,16 @@ func _on_dash_cooldown_timeout():
 	shipParticals3.emitting = false
 	shipParticals4.emitting = false
 
+func _on_amorecharge_timeout():
+	amo += 1
+	print(amo)
+
 func _input(event):
+	if amo < 3 and $amorecharge.time_left == 0:
+		$amorecharge.start()
+		
+		print(amo)
+	
 	if event.is_action_pressed("shoot") and amo > 0 and is_noodle == false:
 		Events.emit_signal("shooting")
 		amo -= 1
@@ -109,3 +116,4 @@ func _physics_process(delta):
 		velocity.y = lerp(velocity.y, float(0), delta * .8)
 		
 	position = Vector2(wrapf(position.x, 0, SIZE.x), wrapf(position.y, 0, SIZE.y))
+
