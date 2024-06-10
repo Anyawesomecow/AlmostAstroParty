@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0ggfi8fqjytl"]
+
+[ext_resource type="Texture2D" uid="uid://bolekku2arck" path="res://UI/textures/weird Kam picture.png" id="1_1qavf"]
+[ext_resource type="Script" path="res://colidablals/brakeablewall.gd" id="1_qpfgn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkttf"]
+size = Vector2(111, 116)
+
+[node name="breakable" type="Node2D"]
+script = ExtResource("1_qpfgn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(46.5, 98)
+shape = SubResource("RectangleShape2D_nkttf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(46.25, 74.5)
+scale = Vector2(3.54688, 4.65625)
+texture = ExtResource("1_1qavf")
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(46.5, 82)
+shape = SubResource("RectangleShape2D_nkttf")
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
