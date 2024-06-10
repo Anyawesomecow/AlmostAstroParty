@@ -13,6 +13,7 @@ var defaultBurtAmountBurst = 100
 @onready var shipParticals3 = $particals_ship/CPUParticles2D3
 @onready var shipParticals4 = $particals_ship/CPUParticles2D4
 @onready var SIZE = Vector2(700, 400)
+@onready var noodleParticals = $noodle_particals/GPUParticles2D
 @onready var sprite = $Sprite2D
 @onready var dashTimer = $dashTimer
 @onready var dashCooldown = $dashCooldown
@@ -21,6 +22,7 @@ var defaultBurtAmountBurst = 100
 func _ready(): # onreadythings
 	$noodle.hide()
 	$ship.show()
+	noodleParticals.emitting = false
 	shipParticals1.emitting = true
 	shipParticals2.emitting = true
 	shipParticals3.emitting = false
@@ -29,6 +31,7 @@ func _ready(): # onreadythings
 	shipParticals2.amount = defaultBurtAmount
 	shipParticals3.amount = defaultBurtAmountBurst
 	shipParticals4.amount = defaultBurtAmountBurst
+	
 
 func dash(): #dash
 	boostVisuals()
@@ -48,8 +51,11 @@ func _on_denoodling_timeout(): # un noodling
 	$ship.show()
 	$noodle.hide()
 	
+	print("earu r wueiw")
+	
 	shipParticals1.emitting = true
 	shipParticals2.emitting = true
+	noodleParticals.emitting = false
 
 	is_noodle = false
 
@@ -57,12 +63,17 @@ func _on_area_2d_area_entered(area): # getting hit stuff
 	if is_noodle == true:
 		queue_free()
 	else:
+		$dashCooldown.stop()
 		$denoodling.start()
 		is_noodle = true
-	shipParticals1.emitting = false
-	shipParticals2.emitting = false
-	$ship.hide()
-	$noodle.show()
+		shipParticals1.emitting = false
+		shipParticals2.emitting = false
+		shipParticals3.emitting = false
+		shipParticals4.emitting = false
+		noodleParticals.emitting = true
+		print(shipParticals1.emitting)
+		$ship.hide()
+		$noodle.show()
 
 func _on_dash_cooldown_timeout(): # puts partcals back to normal after dash
 	shipParticals1.emitting = true
