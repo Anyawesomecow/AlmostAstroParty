@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doe6wqtethw8b"
-path="res://.godot/imported/purple ship short.png-40eb37b1f40a5945da0afee270077fb1.ctex"
+uid="uid://4k3aarp23v4v"
+path="res://.godot/imported/Noodle.png-fe8b27904817378c04bd53fbc88dd3cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/purple ship short.png"
-dest_files=["res://.godot/imported/purple ship short.png-40eb37b1f40a5945da0afee270077fb1.ctex"]
+source_file="res://player/Noodle.png"
+dest_files=["res://.godot/imported/Noodle.png-fe8b27904817378c04bd53fbc88dd3cb.ctex"]
 
 [params]
 
