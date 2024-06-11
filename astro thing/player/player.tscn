@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dxsa1l6upmplg"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_cqx27"]
-[ext_resource type="Texture2D" uid="uid://c4addnpyiob5o" path="res://player/purple ship long.png" id="2_x1td5"]
+[ext_resource type="Texture2D" uid="uid://c45mwap0tefi1" path="res://player/purple ship long.png" id="2_x1td5"]
 [ext_resource type="Texture2D" uid="uid://5vdfw1i5xm3o" path="res://player/kai big face.png" id="3_xc7iu"]
 
 [sub_resource type="Curve" id="Curve_bb2o5"]
