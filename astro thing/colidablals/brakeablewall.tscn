@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://colidablals/brakeablewall.gd" id="1_qpfgn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkttf"]
-size = Vector2(113.5, 144.5)
+size = Vector2(111, 116)
 
 [node name="breakable" type="Node2D"]
 script = ExtResource("1_qpfgn")
@@ -12,7 +12,7 @@ script = ExtResource("1_qpfgn")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(47.25, 97.75)
+position = Vector2(46.5, 98)
 shape = SubResource("RectangleShape2D_nkttf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -24,7 +24,7 @@ texture = ExtResource("1_1qavf")
 collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(47, 73.5)
+position = Vector2(46.5, 82)
 shape = SubResource("RectangleShape2D_nkttf")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

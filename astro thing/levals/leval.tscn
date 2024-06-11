@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://d25ljayjqylli"]
+[gd_scene load_steps=5 format=3 uid="uid://d25ljayjqylli"]
 
 [ext_resource type="PackedScene" uid="uid://dxsa1l6upmplg" path="res://player/player.tscn" id="1_6lxp3"]
 [ext_resource type="Script" path="res://levals/leval.gd" id="1_j454r"]
 [ext_resource type="PackedScene" uid="uid://bx0812o0vjn0j" path="res://colidablals/wall 1.tscn" id="2_nmrh1"]
-[ext_resource type="PackedScene" uid="uid://c0ggfi8fqjytl" path="res://colidablals/brakeablewall.tscn" id="3_3t2gw"]
 [ext_resource type="Texture2D" uid="uid://btnt1on62x4dq" path="res://levals/textures/background for wallpaper.png" id="4_2jium"]
 
 [node name="leval_debug" type="Node2D"]
@@ -15,9 +14,6 @@ offset = Vector2(50, 50)
 
 [node name="Wall1" parent="." instance=ExtResource("2_nmrh1")]
 position = Vector2(116, 110)
-
-[node name="breakable" parent="." instance=ExtResource("3_3t2gw")]
-position = Vector2(435.126, 159.627)
 
 [node name="Player" parent="." instance=ExtResource("1_6lxp3")]
 position = Vector2(292, 198)

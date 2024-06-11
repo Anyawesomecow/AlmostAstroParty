@@ -17,7 +17,6 @@ var defaultBurtAmountBurst = 100
 @onready var sprite = $Sprite2D
 @onready var dashTimer = $dashTimer
 @onready var dashCooldown = $dashCooldown
-@onready var shootSound = $shootSound
 
 
 func _ready(): # onreadythings
@@ -52,6 +51,7 @@ func _on_denoodling_timeout(): # un noodling
 	$ship.show()
 	$noodle.hide()
 	
+	print("earu r wueiw")
 	
 	shipParticals1.emitting = true
 	shipParticals2.emitting = true
@@ -91,7 +91,6 @@ func _input(event):
 	
 	if event.is_action_pressed("shoot") and amo > 0 and is_noodle == false:
 		Events.emit_signal("shooting")
-		shootSound.play()
 		amo -= 1
 	
 	if event.is_action_pressed("esc"):
