@@ -1,9 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://dxsa1l6upmplg"]
+[gd_scene load_steps=18 format=3 uid="uid://dxsa1l6upmplg"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_cqx27"]
 [ext_resource type="Texture2D" uid="uid://lh5qiucwhwuw" path="res://player/purple_ship_animated.png" id="2_cy1n1"]
 [ext_resource type="Texture2D" uid="uid://ckd4k0h2sfumq" path="res://player/Purple_Ship_Blue_Animated.png" id="3_gcnm1"]
 [ext_resource type="Texture2D" uid="uid://4k3aarp23v4v" path="res://player/Noodle.png" id="4_u4w5q"]
+[ext_resource type="AudioStream" uid="uid://g0y7poortp5h" path="res://player/shoot noise.mp3" id="5_t4ea3"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qopl4"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [sub_resource type="Curve" id="Curve_bb2o5"]
 min_value = -200.0
@@ -71,6 +80,9 @@ radius = 9.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cqx27")
+
+[node name="PlayerInput" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_qopl4")
 
 [node name="particals_ship" type="Node2D" parent="."]
 
@@ -153,7 +165,7 @@ process_material = SubResource("ParticleProcessMaterial_4w38y")
 position = Vector2(1, 0)
 rotation = 1.57309
 sprite_frames = SubResource("SpriteFrames_bxdo3")
-frame_progress = 0.681166
+frame_progress = 0.700768
 
 [node name="ship_blue" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 0)
@@ -184,7 +196,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="denoodling" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -195,6 +207,10 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_q8b01")
 
 [node name="shootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_t4ea3")
+
+[node name="deathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_t4ea3")
 
 [connection signal="timeout" from="dashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="amorecharge" to="." method="_on_amorecharge_timeout"]

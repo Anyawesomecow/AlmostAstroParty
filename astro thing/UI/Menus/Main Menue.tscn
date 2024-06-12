@@ -21,7 +21,7 @@ font_names = PackedStringArray("Minecraft")
 [sub_resource type="Theme" id="Theme_t5wf3"]
 default_font = SubResource("SystemFont_hnyk5")
 Button/colors/font_color = Color(0.885149, 0.325414, 0, 1)
-Button/colors/font_focus_color = Color(0.885149, 0.325414, 0, 1)
+Button/colors/font_focus_color = Color(0.56074, 0.157986, 4.81308e-08, 1)
 Button/colors/font_hover_color = Color(1, 0.456481, 0.231551, 1)
 Button/fonts/font = SubResource("SystemFont_kbhii")
 Button/styles/disabled = null

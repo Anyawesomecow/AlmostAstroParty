@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 var is_noodle = false
 var angleBefore = 0
 var speed = 200
@@ -21,6 +20,12 @@ var defaultBurtAmountBurst = 100
 @onready var dashCooldown = $dashCooldown
 @onready var shootSound = $shootSound
 
+@onready var input = $PlayerInput
+
+@export var pid = 1 :
+	set(id):
+		pid = id
+		$PlayerInput.set_multiplayer_authority(id)
 
 func _ready(): # onreadythings
 	boostship.hide()
@@ -38,7 +43,6 @@ func _ready(): # onreadythings
 	shipParticals3.amount = defaultBurtAmountBurst
 	shipParticals4.amount = defaultBurtAmountBurst
 	
-
 func dash(): #dash
 	boostVisuals()
 	rotation = angleBefore + PI/2.5
@@ -54,13 +58,10 @@ func boostVisuals(): # change particals when boosting
 	shipParticals3.emitting = true
 	shipParticals4.emitting = true
 
-
-
 func _on_denoodling_timeout(): # un noodling
 	$ship_red.show()
 	$noodle.hide()
-	
-	
+
 	shipParticals1.emitting = true
 	shipParticals2.emitting = true
 	noodleParticals.emitting = false
@@ -107,6 +108,7 @@ func _input(event):
 		amo -= 1
 	
 	if event.is_action_pressed("esc"):
+		# TODO: disconnecting, closing server
 		get_tree().quit()
 		
 func _physics_process(delta):
