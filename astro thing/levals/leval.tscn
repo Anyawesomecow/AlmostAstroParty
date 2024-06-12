@@ -11,6 +11,8 @@ script = ExtResource("1_j454r")
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
+[node name="shipholder" type="Node2D" parent="."]
+
 [node name="Wall1" parent="." instance=ExtResource("2_nmrh1")]
 position = Vector2(100, 110)
 

@@ -3,7 +3,9 @@ extends Node2D
 @onready var bullet = preload("res://player/bullet.tscn")
 @onready var Player = preload("res://player/player.tscn")
 @onready var leval = $"."
-@onready var player = $Player
+@onready var shipHolder = $shipholder
+@onready var players = shipHolder.get_children(0)
+@onready var player = players[0]
 
 func _ready():
 	add_player()
@@ -18,7 +20,7 @@ func _ready():
 func add_player():
 	print("scrank")
 	var playerReady = Player.instantiate()
-	leval.add_child(playerReady)
+	shipHolder.add_child(playerReady)
 
 func _on_server_closed():
 	get_tree().change_scene_to_file("res://UI/Menus/Main Menue.gd")
