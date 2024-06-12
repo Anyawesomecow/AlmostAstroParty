@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 var is_noodle = false
 var angleBefore = 0
 var speed = 200
@@ -8,6 +9,7 @@ var turnConstant = PI
 var amo = 3
 var defaultBurtAmount = 50
 var defaultBurtAmountBurst = 100
+@onready var boostship = $ship_blue
 @onready var shipParticals1 = $particals_ship/CPUParticles2D
 @onready var shipParticals2 = $particals_ship/CPUParticles2D2
 @onready var shipParticals3 = $particals_ship/CPUParticles2D3
@@ -21,8 +23,11 @@ var defaultBurtAmountBurst = 100
 
 
 func _ready(): # onreadythings
+	boostship.hide()
 	$noodle.hide()
-	$ship.show()
+	$ship_red.show()
+	$ship_red.play()
+	boostship.play()
 	noodleParticals.emitting = false
 	shipParticals1.emitting = true
 	shipParticals2.emitting = true
@@ -41,6 +46,9 @@ func dash(): #dash
 	dashCooldown.start()
 
 func boostVisuals(): # change particals when boosting
+	$noodle.hide()
+	$ship_red.hide()
+	boostship.show()
 	shipParticals1.emitting = false
 	shipParticals2.emitting = false
 	shipParticals3.emitting = true
@@ -49,7 +57,7 @@ func boostVisuals(): # change particals when boosting
 
 
 func _on_denoodling_timeout(): # un noodling
-	$ship.show()
+	$ship_red.show()
 	$noodle.hide()
 	
 	
@@ -66,13 +74,15 @@ func _on_area_2d_area_entered(area): # getting hit stuff
 		$dashCooldown.stop()
 		$denoodling.start()
 		is_noodle = true
+		boostship.hide()
+		$ship_red.show()
 		shipParticals1.emitting = false
 		shipParticals2.emitting = false
 		shipParticals3.emitting = false
 		shipParticals4.emitting = false
 		noodleParticals.emitting = true
 		print(shipParticals1.emitting)
-		$ship.hide()
+		$ship_red.hide()
 		$noodle.show()
 
 func _on_dash_cooldown_timeout(): # puts partcals back to normal after dash
@@ -80,6 +90,8 @@ func _on_dash_cooldown_timeout(): # puts partcals back to normal after dash
 	shipParticals2.emitting = true
 	shipParticals3.emitting = false
 	shipParticals4.emitting = false
+	boostship.hide()
+	$ship_red.show()
 
 func _on_amorecharge_timeout():# adds amo
 	amo += 1

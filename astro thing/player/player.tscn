@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxsa1l6upmplg"]
+[gd_scene load_steps=16 format=3 uid="uid://dxsa1l6upmplg"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_cqx27"]
-[ext_resource type="Texture2D" uid="uid://c4addnpyiob5o" path="res://player/purple ship long.png" id="2_x1td5"]
+[ext_resource type="Texture2D" uid="uid://lh5qiucwhwuw" path="res://player/purple_ship_animated.png" id="2_cy1n1"]
+[ext_resource type="Texture2D" uid="uid://ckd4k0h2sfumq" path="res://player/Purple_Ship_Blue_Animated.png" id="3_gcnm1"]
 [ext_resource type="Texture2D" uid="uid://4k3aarp23v4v" path="res://player/Noodle.png" id="4_u4w5q"]
 
 [sub_resource type="Curve" id="Curve_bb2o5"]
@@ -18,6 +19,50 @@ particle_flag_disable_z = true
 gravity = Vector3(0, 0, 0)
 scale_min = 0.01
 scale_max = 0.01
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tie6b"]
+atlas = ExtResource("2_cy1n1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq34h"]
+atlas = ExtResource("2_cy1n1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bxdo3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tie6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq34h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruxih"]
+atlas = ExtResource("3_gcnm1")
+region = Rect2(0, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npcmd"]
+atlas = ExtResource("3_gcnm1")
+region = Rect2(32, 0, 32, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fp2qx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruxih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npcmd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s6o2x"]
 radius = 9.0
@@ -78,7 +123,7 @@ angular_velocity_max = 58.18
 radial_accel_curve = SubResource("Curve_bb2o5")
 scale_amount_min = 3.0
 scale_amount_max = 3.0
-color = Color(1, 0.360784, 0, 1)
+color = Color(0.339469, 0.599343, 0.979748, 1)
 color_ramp = SubResource("Gradient_cwlqt")
 
 [node name="CPUParticles2D4" type="CPUParticles2D" parent="particals_ship"]
@@ -96,7 +141,7 @@ angular_velocity_max = 58.18
 radial_accel_curve = SubResource("Curve_bb2o5")
 scale_amount_min = 3.0
 scale_amount_max = 3.0
-color = Color(1, 0.360784, 0, 1)
+color = Color(0.328062, 0.626183, 0.879627, 1)
 color_ramp = SubResource("Gradient_cwlqt")
 
 [node name="noodle_particals" type="Node2D" parent="."]
@@ -104,9 +149,18 @@ color_ramp = SubResource("Gradient_cwlqt")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="noodle_particals"]
 process_material = SubResource("ParticleProcessMaterial_4w38y")
 
-[node name="ship" type="Sprite2D" parent="."]
-rotation = 1.5708
-texture = ExtResource("2_x1td5")
+[node name="ship_red" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
+rotation = 1.57309
+sprite_frames = SubResource("SpriteFrames_bxdo3")
+frame_progress = 0.681166
+
+[node name="ship_blue" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 0)
+rotation = 1.57082
+sprite_frames = SubResource("SpriteFrames_fp2qx")
+frame = 1
+frame_progress = 0.234719
 
 [node name="noodle" type="Sprite2D" parent="."]
 position = Vector2(-1.43051e-06, 9.53674e-07)
