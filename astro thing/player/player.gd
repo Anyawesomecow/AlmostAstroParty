@@ -25,7 +25,7 @@ var defaultBurtAmountBurst = 100
 @export var pid = 1 :
 	set(id):
 		pid = id
-		$PlayerInput.set_multiplayer_authority(id)
+		input.set_multiplayer_authority(id)
 
 func _ready(): # onreadythings
 	boostship.hide()

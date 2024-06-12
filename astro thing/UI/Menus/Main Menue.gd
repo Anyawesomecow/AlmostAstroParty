@@ -28,4 +28,5 @@ func _on_settings_pressed():
 
 func _on_host_pressed():
 	Lobby.create_game()
+	Events.emit_signal("addingPlayer")
 	get_tree().change_scene_to_file("res://levals/leval.tscn")
