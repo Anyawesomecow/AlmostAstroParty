@@ -81,7 +81,6 @@ func _on_area_2d_area_entered(area): # getting hit stuff
 		shipParticals3.emitting = false
 		shipParticals4.emitting = false
 		noodleParticals.emitting = true
-		print(shipParticals1.emitting)
 		$ship_red.hide()
 		$noodle.show()
 
