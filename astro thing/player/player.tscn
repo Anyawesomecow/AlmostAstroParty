@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxsa1l6upmplg"]
+[gd_scene load_steps=9 format=3 uid="uid://dxsa1l6upmplg"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_cqx27"]
 [ext_resource type="Texture2D" uid="uid://c4addnpyiob5o" path="res://player/purple ship long.png" id="2_x1td5"]
-[ext_resource type="AudioStream" uid="uid://banotjnah8apd" path="res://audio/shoot noise.mp3" id="4_24q01"]
 [ext_resource type="Texture2D" uid="uid://4k3aarp23v4v" path="res://player/Noodle.png" id="4_u4w5q"]
 
 [sub_resource type="Curve" id="Curve_bb2o5"]
@@ -142,7 +141,6 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_q8b01")
 
 [node name="shootSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_24q01")
 
 [connection signal="timeout" from="dashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="amorecharge" to="." method="_on_amorecharge_timeout"]
