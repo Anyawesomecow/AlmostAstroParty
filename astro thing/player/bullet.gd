@@ -1,6 +1,6 @@
 extends Node2D
 
-var SIZE = get_viewport_rect().size + Vector2(700, 400)
+var SIZE = get_viewport_rect().size + Vector2(512, 512)
 var velocity = Vector2()
 var me = "res://player/bullet.tscn"
 const SPEED = 300.0

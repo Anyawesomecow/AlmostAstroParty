@@ -10,14 +10,13 @@
 script = ExtResource("1_j454r")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(315, 180)
-offset = Vector2(50, 50)
+anchor_mode = 0
 
 [node name="Wall1" parent="." instance=ExtResource("2_nmrh1")]
-position = Vector2(116, 110)
+position = Vector2(100, 110)
 
 [node name="breakable" parent="." instance=ExtResource("3_3t2gw")]
-position = Vector2(435.126, 159.627)
+position = Vector2(350, 159.627)
 
 [node name="Player" parent="." instance=ExtResource("1_6lxp3")]
 position = Vector2(292, 198)
@@ -31,4 +30,5 @@ position = Vector2(600, 100)
 motion_scale = Vector2(5, 5)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-319, 71)
 texture = ExtResource("4_2jium")
