@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://UI/Menus/Main Menue.gd" id="1_dn3mb"]
 [ext_resource type="Theme" uid="uid://dqt8ckud00u6" path="res://UI/new_theme.tres" id="2_wlpdl"]
-[ext_resource type="AudioStream" uid="uid://nfh38v5fpjei" path="res://audio/astroparty menue music.mp3" id="3_0at6g"]
+[ext_resource type="AudioStream" uid="uid://c6htprld4rcik" path="res://audio/astroparty menue music.mp3" id="3_0at6g"]
 
 [sub_resource type="SystemFont" id="SystemFont_kbhii"]
 font_names = PackedStringArray("Minecraft")
