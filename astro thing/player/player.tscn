@@ -1,9 +1,11 @@
+
 [gd_scene load_steps=20 format=3 uid="uid://dxsa1l6upmplg"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_cqx27"]
 [ext_resource type="Script" path="res://player/player_input.gd" id="2_7p6yb"]
 [ext_resource type="Texture2D" uid="uid://lh5qiucwhwuw" path="res://player/purple_ship_animated.png" id="2_cy1n1"]
 [ext_resource type="Texture2D" uid="uid://ckd4k0h2sfumq" path="res://player/Purple_Ship_Blue_Animated.png" id="3_gcnm1"]
+
 [ext_resource type="Texture2D" uid="uid://4k3aarp23v4v" path="res://player/Noodle.png" id="4_u4w5q"]
 [ext_resource type="AudioStream" uid="uid://g0y7poortp5h" path="res://player/shoot noise.mp3" id="5_t4ea3"]
 
@@ -41,54 +43,98 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.01
 scale_max = 0.01
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tie6b"]
-atlas = ExtResource("2_cy1n1")
+[sub_resource type="CircleShape2D" id="CircleShape2D_s6o2x"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q8b01"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec33g"]
+atlas = ExtResource("2_nmdj2")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oq34h"]
-atlas = ExtResource("2_cy1n1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5vlj"]
+atlas = ExtResource("2_nmdj2")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bxdo3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tie6b")
+"texture": SubResource("AtlasTexture_ec33g")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oq34h")
+"texture": SubResource("AtlasTexture_d5vlj")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ruxih"]
-atlas = ExtResource("3_gcnm1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab06g"]
+atlas = ExtResource("3_gudsa")
 region = Rect2(0, 0, 32, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_npcmd"]
-atlas = ExtResource("3_gcnm1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdnkd"]
+atlas = ExtResource("3_gudsa")
 region = Rect2(32, 0, 32, 36)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fp2qx"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ruxih")
+"texture": SubResource("AtlasTexture_ab06g")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_npcmd")
+"texture": SubResource("AtlasTexture_hdnkd")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_s6o2x"]
-radius = 9.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o56n"]
+atlas = ExtResource("2_o5uax")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q8b01"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7g8j"]
+atlas = ExtResource("2_o5uax")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yoadv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8o56n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7g8j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6gc1"]
+atlas = ExtResource("3_6n6rw")
+region = Rect2(0, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj427"]
+atlas = ExtResource("3_6n6rw")
+region = Rect2(32, 0, 32, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0o5qn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6gc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj427")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cqx27")
@@ -178,6 +224,7 @@ color_ramp = SubResource("Gradient_cwlqt")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="noodle_particals"]
 process_material = SubResource("ParticleProcessMaterial_4w38y")
 
+
 [node name="ship_red" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
 rotation = 1.57309
@@ -196,6 +243,7 @@ position = Vector2(-1.43051e-06, 9.53674e-07)
 rotation = 1.5708
 scale = Vector2(0.859557, 0.859557)
 texture = ExtResource("4_u4w5q")
+
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_s6o2x")
@@ -228,6 +276,85 @@ stream = ExtResource("5_t4ea3")
 
 [node name="deathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_t4ea3")
+
+[node name="Purp" type="Node2D" parent="."]
+
+[node name="ship_red" type="AnimatedSprite2D" parent="Purp"]
+visible = false
+position = Vector2(1, 0)
+rotation = 1.57309
+sprite_frames = SubResource("SpriteFrames_bxdo3")
+frame_progress = 0.681166
+
+[node name="ship_blue" type="AnimatedSprite2D" parent="Purp"]
+visible = false
+position = Vector2(-1, 0)
+rotation = 1.57082
+sprite_frames = SubResource("SpriteFrames_fp2qx")
+frame_progress = 0.234719
+
+[node name="noodle" type="Sprite2D" parent="Purp"]
+visible = false
+position = Vector2(-1.43051e-06, 9.53674e-07)
+rotation = 1.5708
+scale = Vector2(0.859557, 0.859557)
+texture = ExtResource("4_u4w5q")
+
+[node name="Green" type="Node2D" parent="."]
+
+[node name="ship_red" type="AnimatedSprite2D" parent="Green"]
+visible = false
+position = Vector2(1, 0)
+rotation = 1.57309
+sprite_frames = SubResource("SpriteFrames_yoadv")
+
+[node name="ship_blue" type="AnimatedSprite2D" parent="Green"]
+visible = false
+position = Vector2(-1, 0)
+rotation = 1.57082
+sprite_frames = SubResource("SpriteFrames_0o5qn")
+
+[node name="noodle" type="Sprite2D" parent="Green"]
+visible = false
+position = Vector2(-1.43051e-06, 9.53674e-07)
+rotation = 1.5708
+scale = Vector2(0.859557, 0.859557)
+
+[node name="Red" type="Node2D" parent="."]
+
+[node name="ship_red" type="AnimatedSprite2D" parent="Red"]
+visible = false
+position = Vector2(1, 0)
+rotation = 1.57309
+
+[node name="ship_blue" type="AnimatedSprite2D" parent="Red"]
+visible = false
+position = Vector2(-1, 0)
+rotation = 1.57082
+
+[node name="noodle" type="Sprite2D" parent="Red"]
+visible = false
+position = Vector2(-1.43051e-06, 9.53674e-07)
+rotation = 1.5708
+scale = Vector2(0.859557, 0.859557)
+
+[node name="Blue" type="Node2D" parent="."]
+
+[node name="ship_red" type="AnimatedSprite2D" parent="Blue"]
+visible = false
+position = Vector2(1, 0)
+rotation = 1.57309
+
+[node name="ship_blue" type="AnimatedSprite2D" parent="Blue"]
+visible = false
+position = Vector2(-1, 0)
+rotation = 1.57082
+
+[node name="noodle" type="Sprite2D" parent="Blue"]
+visible = false
+position = Vector2(-1.43051e-06, 9.53674e-07)
+rotation = 1.5708
+scale = Vector2(0.859557, 0.859557)
 
 [connection signal="timeout" from="dashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="amorecharge" to="." method="_on_amorecharge_timeout"]
