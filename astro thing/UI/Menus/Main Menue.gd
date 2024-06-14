@@ -6,12 +6,11 @@ extends Control
 
 
 func _ready(): # Called when the node enters the scene tree for the first time. lets you use tab and enter in menue
+	get_tree().change_scene_to_file("res://levals/leval.tscn")
 	startButton.grab_focus()
 	joinButton.hide()
 	settingsButton.hide()
 	hostButton.hide()
-
-
 
 func _on_start_pressed():# starts game
 	startButton.hide()
@@ -23,11 +22,12 @@ func _on_start_pressed():# starts game
 
 func _on_join_pressed():
 	get_tree().change_scene_to_file("res://levals/leval.tscn")
-
+	Lobby.Join_as_player() # TODO: addr
+	
 
 func _on_settings_pressed():
 	pass # Replace with function body.
 
-
 func _on_host_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://levals/leval.tscn")
+	Lobby.become_host()

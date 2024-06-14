@@ -10,6 +10,10 @@ var turnConstant = PI
 var amo = 3
 var defaultBurtAmount = 50
 var defaultBurtAmountBurst = 100
+var do_boost_visuals = false
+var stop_boost_visuals = false
+
+@onready var boostship = $ship_blue
 @onready var colors = [$Purp, $Green, $Red, $Blue]
 @onready var redship = colors[color].get_children()[0]
 @onready var boostship = colors[color].get_children()[1]
@@ -25,6 +29,16 @@ var defaultBurtAmountBurst = 100
 @onready var dashCooldown = $dashCooldown
 @onready var shootSound = $shootSound
 
+@onready var input = $PlayerInput
+
+var player_name
+
+
+@export var player_id := 1 :
+	set(id):
+		player_id = id
+		print(id)
+		%PlayerInput.set_multiplayer_authority(id)
 
 func _ready(): # onreadythings
 	boostship.hide()
@@ -42,29 +56,31 @@ func _ready(): # onreadythings
 	shipParticals3.amount = defaultBurtAmountBurst
 	shipParticals4.amount = defaultBurtAmountBurst
 
-
-func dash(): #dash
-	boostVisuals()
-	rotation = angleBefore + PI/2.5
-	velocity = Vector2(150 * cos(rotation), 150 * sin(rotation))
-	dashCooldown.start()
-
+	
+	
 func boostVisuals(): # change particals when boosting
-	noodle.hide()
-	redship.hide()
+	print("bwamp")
+	$noodle.hide()
+	$ship_red.hide()
 	boostship.show()
 	shipParticals1.emitting = false
 	shipParticals2.emitting = false
 	shipParticals3.emitting = true
 	shipParticals4.emitting = true
-
-
+	
+	
+func dash(): #dash
+	%PlayerInput.boostVisuals()
+	rotation = angleBefore + PI/2.5
+	velocity = Vector2(150 * cos(rotation), 150 * sin(rotation))
+	dashCooldown.start()
 
 func _on_denoodling_timeout(): # un noodling
-	redship.show()
-	noodle.hide()
-	
-	
+
+	$ship_red.show()
+	$noodle.hide()
+
+
 	shipParticals1.emitting = true
 	shipParticals2.emitting = true
 	noodleParticals.emitting = false
@@ -88,13 +104,17 @@ func _on_area_2d_area_entered(area): # getting hit stuff
 		redship.hide()
 		noodle.show()
 
-func _on_dash_cooldown_timeout(): # puts partcals back to normal after dash
+
+func _on_dash_cooldown_timeout_visuals():
 	shipParticals1.emitting = true
 	shipParticals2.emitting = true
 	shipParticals3.emitting = false
 	shipParticals4.emitting = false
 	boostship.hide()
 	redship.show()
+
+func _on_dash_cooldown_timeout(): # puts partcals back to normal after dash
+	%PlayerInput.stop_boost()
 
 func _on_amorecharge_timeout():# adds amo
 	amo += 1
@@ -110,10 +130,19 @@ func _input(event):
 		amo -= 1
 	
 	if event.is_action_pressed("esc"):
+		# TODO: disconnecting, closing server
 		get_tree().quit()
 		
 func _physics_process(delta):
 	var collisionInfo = move_and_collide(velocity * delta)
+	
+	if do_boost_visuals == true:
+		boostVisuals()
+		do_boost_visuals = false
+	
+	if stop_boost_visuals == true:
+		_on_dash_cooldown_timeout_visuals()
+		stop_boost_visuals = false
 	
 	if Input.is_action_just_pressed("turn"):
 		if dashTimer.time_left > 0 and dashCooldown.time_left == 0 and is_noodle == false:

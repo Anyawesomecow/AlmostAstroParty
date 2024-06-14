@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bx0812o0vjn0j"]
 
-[ext_resource type="Texture2D" path="res://UI/textures/weird Kam picture.png" id="1_qkmdc"]
+[ext_resource type="Texture2D" uid="uid://bolekku2arck" path="res://UI/textures/weird Kam picture.png" id="1_qkmdc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkttf"]
 size = Vector2(111, 244)
