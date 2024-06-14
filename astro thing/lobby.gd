@@ -2,7 +2,7 @@
 # technically, the lobby host has both a server peer and a client peer
 extends Node
 
-const PORT = 27015
+'const PORT = 27015
 const MAX_CONNECTIONS = 8
 
 # other players player info
@@ -92,5 +92,62 @@ func _on_connection_established():
 
 # client-side, disconnect from server
 func _on_connection_disestablished():
-	multiplayer.multiplayer_peer = null
+	multiplayer.multiplayer_peer = null'
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+const Server_port = 8080
+const Server_IP = "127.0.0.1"
+
+var player = preload("res://player/player.tscn")
+
+var shipspawn_node
+
+func become_host():
+	
+	shipspawn_node = get_tree().get_current_scene().get_node("shipholder")
+	print(shipspawn_node)
+	
+	var server_peer = ENetMultiplayerPeer.new()
+	server_peer.create_server(Server_port)
+	
+	multiplayer.multiplayer_peer = server_peer
+	multiplayer.peer_connected.connect(add_player_to_game)
+	multiplayer.peer_disconnected.connect(del_player)
+	
+	add_player_to_game(1)
+
+
+func Join_as_player():
+	var client_peer = ENetMultiplayerPeer.new()
+	client_peer.create_client(Server_IP, Server_port)
+	
+	multiplayer.multiplayer_peer = client_peer
+	
+
+
+func add_player_to_game(id: int):
+	var player_to_add = player.instantiate()
+	player_to_add.player_id = id
+	player_to_add.player_name = str(id)
+	
+	shipspawn_node.add_child(player_to_add, true)
+
+func del_player(id: int):
+	if not shipspawn_node.has_node(str(id)):
+		return
+		
+	shipspawn_node.get_node(str(id)).queue_free()
+
 
