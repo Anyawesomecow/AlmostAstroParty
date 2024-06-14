@@ -8,6 +8,9 @@ var turnConstant = PI
 var amo = 3
 var defaultBurtAmount = 50
 var defaultBurtAmountBurst = 100
+var do_boost_visuals = false
+var stop_boost_visuals = false
+
 @onready var boostship = $ship_blue
 @onready var shipParticals1 = $particals_ship/CPUParticles2D
 @onready var shipParticals2 = $particals_ship/CPUParticles2D2
@@ -47,13 +50,9 @@ func _ready(): # onreadythings
 	shipParticals3.amount = defaultBurtAmountBurst
 	shipParticals4.amount = defaultBurtAmountBurst
 	
-func dash(): #dash
-	boostVisuals()
-	rotation = angleBefore + PI/2.5
-	velocity = Vector2(150 * cos(rotation), 150 * sin(rotation))
-	dashCooldown.start()
-
+	
 func boostVisuals(): # change particals when boosting
+	print("bwamp")
 	$noodle.hide()
 	$ship_red.hide()
 	boostship.show()
@@ -61,6 +60,13 @@ func boostVisuals(): # change particals when boosting
 	shipParticals2.emitting = false
 	shipParticals3.emitting = true
 	shipParticals4.emitting = true
+	
+	
+func dash(): #dash
+	%PlayerInput.boostVisuals()
+	rotation = angleBefore + PI/2.5
+	velocity = Vector2(150 * cos(rotation), 150 * sin(rotation))
+	dashCooldown.start()
 
 func _on_denoodling_timeout(): # un noodling
 	$ship_red.show()
@@ -90,13 +96,17 @@ func _on_area_2d_area_entered(area): # getting hit stuff
 		$ship_red.hide()
 		$noodle.show()
 
-func _on_dash_cooldown_timeout(): # puts partcals back to normal after dash
+
+func _on_dash_cooldown_timeout_visuals():
 	shipParticals1.emitting = true
 	shipParticals2.emitting = true
 	shipParticals3.emitting = false
 	shipParticals4.emitting = false
 	boostship.hide()
 	$ship_red.show()
+
+func _on_dash_cooldown_timeout(): # puts partcals back to normal after dash
+	%PlayerInput.stop_boost()
 
 func _on_amorecharge_timeout():# adds amo
 	amo += 1
@@ -117,6 +127,14 @@ func _input(event):
 		
 func _physics_process(delta):
 	var collisionInfo = move_and_collide(velocity * delta)
+	
+	if do_boost_visuals == true:
+		boostVisuals()
+		do_boost_visuals = false
+	
+	if stop_boost_visuals == true:
+		_on_dash_cooldown_timeout_visuals()
+		stop_boost_visuals = false
 	
 	if Input.is_action_just_pressed("turn"):
 		if dashTimer.time_left > 0 and dashCooldown.time_left == 0 and is_noodle == false:
