@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-var color = 0
+var color = 1
+
 var is_noodle = false
 var angleBefore = 0
 var speed = 200
