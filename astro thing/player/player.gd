@@ -13,7 +13,7 @@ var defaultBurtAmountBurst = 100
 var do_boost_visuals = false
 var stop_boost_visuals = false
 
-@onready var boostship = $ship_blue
+
 @onready var colors = [$Purp, $Green, $Red, $Blue]
 @onready var redship = colors[color].get_children()[0]
 @onready var boostship = colors[color].get_children()[1]
