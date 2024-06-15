@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var color = 1
+
 var is_noodle = false
 var angleBefore = 0
 var speed = 200
@@ -11,7 +13,11 @@ var defaultBurtAmountBurst = 100
 var do_boost_visuals = false
 var stop_boost_visuals = false
 
-@onready var boostship = $ship_blue
+
+@onready var colors = [$Purp, $Green, $Red, $Blue]
+@onready var redship = colors[color].get_children()[0]
+@onready var boostship = colors[color].get_children()[1]
+@onready var noodle = colors[color].get_children()[2]
 @onready var shipParticals1 = $particals_ship/CPUParticles2D
 @onready var shipParticals2 = $particals_ship/CPUParticles2D2
 @onready var shipParticals3 = $particals_ship/CPUParticles2D3
@@ -36,9 +42,9 @@ var player_name
 
 func _ready(): # onreadythings
 	boostship.hide()
-	$noodle.hide()
-	$ship_red.show()
-	$ship_red.play()
+	noodle.hide()
+	redship.show()
+	redship.play()
 	boostship.play()
 	noodleParticals.emitting = false
 	shipParticals1.emitting = true
@@ -49,6 +55,7 @@ func _ready(): # onreadythings
 	shipParticals2.amount = defaultBurtAmount
 	shipParticals3.amount = defaultBurtAmountBurst
 	shipParticals4.amount = defaultBurtAmountBurst
+
 	
 	
 func boostVisuals(): # change particals when boosting
@@ -69,8 +76,10 @@ func dash(): #dash
 	dashCooldown.start()
 
 func _on_denoodling_timeout(): # un noodling
+
 	$ship_red.show()
 	$noodle.hide()
+
 
 	shipParticals1.emitting = true
 	shipParticals2.emitting = true
@@ -86,15 +95,14 @@ func _on_area_2d_area_entered(area): # getting hit stuff
 		$denoodling.start()
 		is_noodle = true
 		boostship.hide()
-		$ship_red.show()
+		redship.show()
 		shipParticals1.emitting = false
 		shipParticals2.emitting = false
 		shipParticals3.emitting = false
 		shipParticals4.emitting = false
 		noodleParticals.emitting = true
-		print(shipParticals1.emitting)
-		$ship_red.hide()
-		$noodle.show()
+		redship.hide()
+		noodle.show()
 
 
 func _on_dash_cooldown_timeout_visuals():
@@ -104,7 +112,7 @@ func _on_dash_cooldown_timeout_visuals():
 	shipParticals4.emitting = false
 	print("gump")
 	boostship.hide()
-	$ship_red.show()
+	redship.show()
 
 func _on_dash_cooldown_timeout(): # puts partcals back to normal after dash
 	%PlayerInput.stop_boost()
