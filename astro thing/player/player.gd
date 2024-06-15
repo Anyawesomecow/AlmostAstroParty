@@ -41,6 +41,7 @@ var player_name
 		%PlayerInput.set_multiplayer_authority(id)
 
 func _ready(): # onreadythings
+	shipcolor()
 	boostship.hide()
 	noodle.hide()
 	redship.show()
@@ -56,10 +57,19 @@ func _ready(): # onreadythings
 	shipParticals3.amount = defaultBurtAmountBurst
 	shipParticals4.amount = defaultBurtAmountBurst
 
-	
+
+func shipcolor():
+	colors[0].hide()
+	colors[1].hide()
+	colors[2].hide()
+	colors[3].hide()
+	colors[color].show()
+
+
 	
 func boostVisuals(): # change particals when boosting
 	print("bwamp")
+	print(noodle)
 	noodle.hide()
 	redship.hide()
 	boostship.show()
@@ -70,15 +80,16 @@ func boostVisuals(): # change particals when boosting
 	
 	
 func dash(): #dash
-	%PlayerInput.boostVisuals()
-	rotation = angleBefore + PI/2.5
-	velocity = Vector2(150 * cos(rotation), 150 * sin(rotation))
-	dashCooldown.start()
+	if multiplayer.is_server() == true:
+		%PlayerInput.boostVisuals()
+		rotation = angleBefore + PI/2.5
+		velocity = Vector2(150 * cos(rotation), 150 * sin(rotation))
+		dashCooldown.start()
 
 func _on_denoodling_timeout(): # un noodling
 
-	$ship_red.show()
-	$noodle.hide()
+	redship.show()
+	noodle.hide()
 
 
 	shipParticals1.emitting = true
@@ -135,6 +146,9 @@ func _input(event):
 		get_tree().quit()
 		
 func _physics_process(delta):
+	#if not multiplayer.is_server():
+		
+	
 	var collisionInfo = move_and_collide(velocity * delta)
 	
 	if do_boost_visuals == true:
@@ -171,4 +185,5 @@ func _physics_process(delta):
 		velocity.y = lerp(velocity.y, float(0), delta * .8)
 		
 	position = Vector2(wrapf(position.x, 0, SIZE.x), wrapf(position.y, 0, SIZE.y))
+
 

@@ -1,10 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://dxsa1l6upmplg"]
+[gd_scene load_steps=28 format=3 uid="uid://dxsa1l6upmplg"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_cqx27"]
 [ext_resource type="Script" path="res://player/player_input.gd" id="2_7p6yb"]
 [ext_resource type="Texture2D" uid="uid://lh5qiucwhwuw" path="res://player/purple_ship_animated.png" id="2_cy1n1"]
 [ext_resource type="Texture2D" uid="uid://ckd4k0h2sfumq" path="res://player/Purple_Ship_Blue_Animated.png" id="3_gcnm1"]
+[ext_resource type="Texture2D" uid="uid://cpr8w4d86n1nx" path="res://player/Green_Ship_Animated.png" id="4_ogn0k"]
 [ext_resource type="Texture2D" uid="uid://4k3aarp23v4v" path="res://player/Noodle.png" id="4_u4w5q"]
+[ext_resource type="Texture2D" uid="uid://y2s3wnwhuhns" path="res://player/green_ship_blue_animated.png" id="5_3yijn"]
 [ext_resource type="AudioStream" uid="uid://g0y7poortp5h" path="res://player/shoot noise.mp3" id="5_t4ea3"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vulvy"]
@@ -17,6 +19,24 @@ properties/1/replication_mode = 1
 properties/2/path = NodePath(".:stop_boost_visuals")
 properties/2/spawn = true
 properties/2/replication_mode = 1
+properties/3/path = NodePath("particals_ship/CPUParticles2D:emitting")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("particals_ship/CPUParticles2D2:emitting")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("particals_ship/CPUParticles2D3:emitting")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("particals_ship/CPUParticles2D4:emitting")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath(".:is_noodle")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath(".:color")
+properties/8/spawn = true
+properties/8/replication_mode = 1
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qopl4"]
 properties/0/path = NodePath(".:position")
@@ -40,44 +60,44 @@ radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q8b01"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tie6b"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ganeh"]
 atlas = ExtResource("2_cy1n1")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oq34h"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2y7ta"]
 atlas = ExtResource("2_cy1n1")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_bxdo3"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_b81gg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tie6b")
+"texture": SubResource("AtlasTexture_ganeh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oq34h")
+"texture": SubResource("AtlasTexture_2y7ta")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ruxih"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_csyv3"]
 atlas = ExtResource("3_gcnm1")
 region = Rect2(0, 0, 32, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_npcmd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0p4k"]
 atlas = ExtResource("3_gcnm1")
 region = Rect2(32, 0, 32, 36)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_fp2qx"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_hogwg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ruxih")
+"texture": SubResource("AtlasTexture_csyv3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_npcmd")
+"texture": SubResource("AtlasTexture_p0p4k")
 }],
 "loop": true,
 "name": &"default",
@@ -89,6 +109,50 @@ particle_flag_disable_z = true
 gravity = Vector3(0, 0, 0)
 scale_min = 0.01
 scale_max = 0.01
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdhof"]
+atlas = ExtResource("4_ogn0k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8joq"]
+atlas = ExtResource("4_ogn0k")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bxdo3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdhof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8joq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vnl0"]
+atlas = ExtResource("5_3yijn")
+region = Rect2(0, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xu4t"]
+atlas = ExtResource("5_3yijn")
+region = Rect2(32, 0, 32, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fp2qx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vnl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xu4t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cqx27")
@@ -210,15 +274,12 @@ stream = ExtResource("5_t4ea3")
 [node name="ship_red" type="AnimatedSprite2D" parent="Purp"]
 position = Vector2(1, 0)
 rotation = 1.57309
-sprite_frames = SubResource("SpriteFrames_bxdo3")
-frame_progress = 0.253417
+sprite_frames = SubResource("SpriteFrames_b81gg")
 
 [node name="ship_blue" type="AnimatedSprite2D" parent="Purp"]
 position = Vector2(-1, 0)
 rotation = 1.57082
-sprite_frames = SubResource("SpriteFrames_fp2qx")
-frame = 1
-frame_progress = 0.234719
+sprite_frames = SubResource("SpriteFrames_hogwg")
 
 [node name="noodle" type="Sprite2D" parent="Purp"]
 position = Vector2(-1.43051e-06, 9.53674e-07)
@@ -237,13 +298,11 @@ process_material = SubResource("ParticleProcessMaterial_4w38y")
 position = Vector2(1, 0)
 rotation = 1.57309
 sprite_frames = SubResource("SpriteFrames_bxdo3")
-frame_progress = 0.253417
 
 [node name="ship_blue" type="AnimatedSprite2D" parent="Green"]
 position = Vector2(-1, 0)
 rotation = 1.57082
 sprite_frames = SubResource("SpriteFrames_fp2qx")
-frame = 1
 frame_progress = 0.234719
 
 [node name="noodle" type="Sprite2D" parent="Green"]
@@ -263,13 +322,11 @@ process_material = SubResource("ParticleProcessMaterial_4w38y")
 position = Vector2(1, 0)
 rotation = 1.57309
 sprite_frames = SubResource("SpriteFrames_bxdo3")
-frame_progress = 0.253417
 
 [node name="ship_blue" type="AnimatedSprite2D" parent="Red"]
 position = Vector2(-1, 0)
 rotation = 1.57082
 sprite_frames = SubResource("SpriteFrames_fp2qx")
-frame = 1
 frame_progress = 0.234719
 
 [node name="noodle" type="Sprite2D" parent="Red"]
@@ -289,13 +346,11 @@ process_material = SubResource("ParticleProcessMaterial_4w38y")
 position = Vector2(1, 0)
 rotation = 1.57309
 sprite_frames = SubResource("SpriteFrames_bxdo3")
-frame_progress = 0.253417
 
 [node name="ship_blue" type="AnimatedSprite2D" parent="Blue"]
 position = Vector2(-1, 0)
 rotation = 1.57082
 sprite_frames = SubResource("SpriteFrames_fp2qx")
-frame = 1
 frame_progress = 0.234719
 
 [node name="noodle" type="Sprite2D" parent="Blue"]
