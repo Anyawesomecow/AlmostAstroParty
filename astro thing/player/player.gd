@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var color = 1
+var color = 0
 
 var is_noodle = false
 var angleBefore = 0
@@ -23,7 +23,7 @@ var stop_boost_visuals = false
 @onready var shipParticals3 = $particals_ship/CPUParticles2D3
 @onready var shipParticals4 = $particals_ship/CPUParticles2D4
 @onready var SIZE = Vector2(512, 512)
-@onready var noodleParticals = $noodle_particals/GPUParticles2D
+@onready var noodleParticals = colors[color].get_children()[3].get_children()[0]
 @onready var sprite = $Sprite2D
 @onready var dashTimer = $dashTimer
 @onready var dashCooldown = $dashCooldown
@@ -60,8 +60,8 @@ func _ready(): # onreadythings
 	
 func boostVisuals(): # change particals when boosting
 	print("bwamp")
-	$noodle.hide()
-	$ship_red.hide()
+	noodle.hide()
+	redship.hide()
 	boostship.show()
 	shipParticals1.emitting = false
 	shipParticals2.emitting = false

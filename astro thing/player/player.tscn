@@ -35,11 +35,10 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_cwlqt"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4w38y"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 0, 0)
-scale_min = 0.01
-scale_max = 0.01
+[sub_resource type="CircleShape2D" id="CircleShape2D_s6o2x"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q8b01"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tie6b"]
 atlas = ExtResource("2_cy1n1")
@@ -85,10 +84,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_s6o2x"]
-radius = 9.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_q8b01"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4w38y"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 0.01
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cqx27")
@@ -173,30 +173,6 @@ scale_amount_max = 3.0
 color = Color(0.328062, 0.626183, 0.879627, 1)
 color_ramp = SubResource("Gradient_cwlqt")
 
-[node name="noodle_particals" type="Node2D" parent="."]
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="noodle_particals"]
-process_material = SubResource("ParticleProcessMaterial_4w38y")
-
-[node name="ship_red" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 0)
-rotation = 1.57309
-sprite_frames = SubResource("SpriteFrames_bxdo3")
-frame_progress = 0.253417
-
-[node name="ship_blue" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, 0)
-rotation = 1.57082
-sprite_frames = SubResource("SpriteFrames_fp2qx")
-frame = 1
-frame_progress = 0.234719
-
-[node name="noodle" type="Sprite2D" parent="."]
-position = Vector2(-1.43051e-06, 9.53674e-07)
-rotation = 1.5708
-scale = Vector2(0.859557, 0.859557)
-texture = ExtResource("4_u4w5q")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_s6o2x")
 
@@ -228,6 +204,110 @@ stream = ExtResource("5_t4ea3")
 
 [node name="deathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_t4ea3")
+
+[node name="Purp" type="Node2D" parent="."]
+
+[node name="ship_red" type="AnimatedSprite2D" parent="Purp"]
+position = Vector2(1, 0)
+rotation = 1.57309
+sprite_frames = SubResource("SpriteFrames_bxdo3")
+frame_progress = 0.253417
+
+[node name="ship_blue" type="AnimatedSprite2D" parent="Purp"]
+position = Vector2(-1, 0)
+rotation = 1.57082
+sprite_frames = SubResource("SpriteFrames_fp2qx")
+frame = 1
+frame_progress = 0.234719
+
+[node name="noodle" type="Sprite2D" parent="Purp"]
+position = Vector2(-1.43051e-06, 9.53674e-07)
+rotation = 1.5708
+scale = Vector2(0.859557, 0.859557)
+texture = ExtResource("4_u4w5q")
+
+[node name="noodle_particals" type="Node2D" parent="Purp"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Purp/noodle_particals"]
+process_material = SubResource("ParticleProcessMaterial_4w38y")
+
+[node name="Green" type="Node2D" parent="."]
+
+[node name="ship_red" type="AnimatedSprite2D" parent="Green"]
+position = Vector2(1, 0)
+rotation = 1.57309
+sprite_frames = SubResource("SpriteFrames_bxdo3")
+frame_progress = 0.253417
+
+[node name="ship_blue" type="AnimatedSprite2D" parent="Green"]
+position = Vector2(-1, 0)
+rotation = 1.57082
+sprite_frames = SubResource("SpriteFrames_fp2qx")
+frame = 1
+frame_progress = 0.234719
+
+[node name="noodle" type="Sprite2D" parent="Green"]
+position = Vector2(-1.43051e-06, 9.53674e-07)
+rotation = 1.5708
+scale = Vector2(0.859557, 0.859557)
+texture = ExtResource("4_u4w5q")
+
+[node name="noodle_particals" type="Node2D" parent="Green"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Green/noodle_particals"]
+process_material = SubResource("ParticleProcessMaterial_4w38y")
+
+[node name="Red" type="Node2D" parent="."]
+
+[node name="ship_red" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(1, 0)
+rotation = 1.57309
+sprite_frames = SubResource("SpriteFrames_bxdo3")
+frame_progress = 0.253417
+
+[node name="ship_blue" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(-1, 0)
+rotation = 1.57082
+sprite_frames = SubResource("SpriteFrames_fp2qx")
+frame = 1
+frame_progress = 0.234719
+
+[node name="noodle" type="Sprite2D" parent="Red"]
+position = Vector2(-1.43051e-06, 9.53674e-07)
+rotation = 1.5708
+scale = Vector2(0.859557, 0.859557)
+texture = ExtResource("4_u4w5q")
+
+[node name="noodle_particals" type="Node2D" parent="Red"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Red/noodle_particals"]
+process_material = SubResource("ParticleProcessMaterial_4w38y")
+
+[node name="Blue" type="Node2D" parent="."]
+
+[node name="ship_red" type="AnimatedSprite2D" parent="Blue"]
+position = Vector2(1, 0)
+rotation = 1.57309
+sprite_frames = SubResource("SpriteFrames_bxdo3")
+frame_progress = 0.253417
+
+[node name="ship_blue" type="AnimatedSprite2D" parent="Blue"]
+position = Vector2(-1, 0)
+rotation = 1.57082
+sprite_frames = SubResource("SpriteFrames_fp2qx")
+frame = 1
+frame_progress = 0.234719
+
+[node name="noodle" type="Sprite2D" parent="Blue"]
+position = Vector2(-1.43051e-06, 9.53674e-07)
+rotation = 1.5708
+scale = Vector2(0.859557, 0.859557)
+texture = ExtResource("4_u4w5q")
+
+[node name="noodle_particals" type="Node2D" parent="Blue"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Blue/noodle_particals"]
+process_material = SubResource("ParticleProcessMaterial_4w38y")
 
 [connection signal="timeout" from="dashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="amorecharge" to="." method="_on_amorecharge_timeout"]
