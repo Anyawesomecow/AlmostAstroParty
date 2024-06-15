@@ -102,6 +102,7 @@ func _on_dash_cooldown_timeout_visuals():
 	shipParticals2.emitting = true
 	shipParticals3.emitting = false
 	shipParticals4.emitting = false
+	print("gump")
 	boostship.hide()
 	$ship_red.show()
 
