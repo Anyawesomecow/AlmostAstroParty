@@ -110,11 +110,15 @@ func _on_connection_disestablished():
 const Server_port = 8080
 const Server_IP = "127.0.0.1"
 
+var host_mode_enabled = false
+
 var player = preload("res://player/player.tscn")
 
 var shipspawn_node
 
 func become_host():
+	
+	host_mode_enabled = true
 	
 	shipspawn_node = get_tree().get_current_scene().get_node("shipholder")
 	print(shipspawn_node)

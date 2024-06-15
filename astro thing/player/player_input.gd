@@ -1,6 +1,9 @@
 extends MultiplayerSynchronizer
 
-var server_rotation
+var server_rotation = 0
+var turnConstant = PI
+var turnDirection = 1
+
 
 @onready var boostship = $"../ship_blue"
 @onready var shipParticals1 = $"../particals_ship/CPUParticles2D"
@@ -10,7 +13,12 @@ var server_rotation
 @onready var player = $".."
 
 
+
+
+
 func _ready():
+	server_rotation += turnConstant * turnDirection
+	
 	set_process(get_multiplayer_authority() == multiplayer.get_unique_id())
 	
 	if get_multiplayer_authority() != multiplayer.get_unique_id():
@@ -34,3 +42,16 @@ func boostVisuals(): # change particals when boosting
 func boost_particals():
 	if multiplayer.is_server():
 		player.do_boost_visuals = true
+
+
+func _physics_process(delta):
+	
+	
+	
+	
+	
+	if Input.is_action_pressed("turn"):
+		server_rotation += turnConstant * turnDirection * delta
+	
+	if not multiplayer.is_server() || Lobby.host_mode_enabled == true:
+		pass

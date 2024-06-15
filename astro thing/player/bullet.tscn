@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://4r1ens1kmeke"]
+[gd_scene load_steps=5 format=3 uid="uid://4r1ens1kmeke"]
 
 [ext_resource type="Script" path="res://player/bullet.gd" id="1_m3d1c"]
 [ext_resource type="Texture2D" uid="uid://sflim16t2enk" path="res://player/bullet.png" id="2_bhcye"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ucrl"]
 radius = 5.09902
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gclye"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource("1_m3d1c")
@@ -20,5 +28,8 @@ collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_8ucrl")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_gclye")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

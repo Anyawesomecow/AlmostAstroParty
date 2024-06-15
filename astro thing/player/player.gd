@@ -68,23 +68,24 @@ func shipcolor():
 
 	
 func boostVisuals(): # change particals when boosting
-	print("bwamp")
-	print(noodle)
-	noodle.hide()
-	redship.hide()
-	boostship.show()
-	shipParticals1.emitting = false
-	shipParticals2.emitting = false
-	shipParticals3.emitting = true
-	shipParticals4.emitting = true
+	if multiplayer.get_unique_id() == player_id:
+		print("bwamp")
+		print(noodle)
+		noodle.hide()
+		redship.hide()
+		boostship.show()
+		shipParticals1.emitting = false
+		shipParticals2.emitting = false
+		shipParticals3.emitting = true
+		shipParticals4.emitting = true
 	
 	
 func dash(): #dash
-	if multiplayer.is_server() == true:
-		%PlayerInput.boostVisuals()
-		rotation = angleBefore + PI/2.5
-		velocity = Vector2(150 * cos(rotation), 150 * sin(rotation))
-		dashCooldown.start()
+	
+	%PlayerInput.boostVisuals()
+	rotation = angleBefore + PI/2.5
+	velocity = Vector2(150 * cos(rotation), 150 * sin(rotation))
+	dashCooldown.start()
 
 func _on_denoodling_timeout(): # un noodling
 
@@ -117,6 +118,7 @@ func _on_area_2d_area_entered(area): # getting hit stuff
 
 
 func _on_dash_cooldown_timeout_visuals():
+	
 	shipParticals1.emitting = true
 	shipParticals2.emitting = true
 	shipParticals3.emitting = false
@@ -146,8 +148,8 @@ func _input(event):
 		get_tree().quit()
 		
 func _physics_process(delta):
-	#if not multiplayer.is_server():
-		
+	
+	
 	
 	var collisionInfo = move_and_collide(velocity * delta)
 	
@@ -166,8 +168,7 @@ func _physics_process(delta):
 			angleBefore = rotation
 			dashTimer.start()
 	
-	if Input.is_action_pressed("turn"):
-		rotation += turnConstant * turnDirection * delta
+	rotation = %PlayerInput.server_rotation
 	
 	if collisionInfo:
 		velocity = velocity.slide(collisionInfo.get_normal())
