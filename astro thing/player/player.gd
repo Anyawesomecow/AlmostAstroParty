@@ -68,7 +68,7 @@ func shipcolor():
 
 	
 func boostVisuals(): # change particals when boosting
-	if multiplayer.get_unique_id() == player_id:
+	if multiplayer.get_unique_id() == player_id || multiplayer.multiplayer_peer:
 		print("bwamp")
 		print(noodle)
 		noodle.hide()
