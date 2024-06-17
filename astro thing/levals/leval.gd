@@ -17,9 +17,10 @@ func _on_server_closed():
 	get_tree().change_scene_to_file("res://UI/Menus/Main Menue.gd")
 
 func shoot():
+	var player = get_tree().get_current_sceen().get_node("player")
 	var BulletReady = bullet.instantiate()
-#	BulletReady.position = player.position + Vector2(cos(player.rotation) * 20, sin(player.rotation) * 20)
-#	BulletReady.rotation = player.rotation
+	BulletReady.position = player.position + Vector2(cos(player.rotation) * 20, sin(player.rotation) * 20)
+	BulletReady.rotation = player.rotation
 	$bullet_holder.add_child(BulletReady)
 
 
