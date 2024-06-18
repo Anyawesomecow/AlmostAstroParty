@@ -11,7 +11,7 @@ var player = preload(\"res://player/player.tscn\")
 var shipspawn_node
 
 func become_host():
-	shipspawn_node = get_tree().get_current_sceen().get_node(\"shipholder\")
+	shipspawn_node = get_tree().get_current_scene().get_node(\"shipholder\")
 	
 	var server_peer = ENetMultiplayerPeer.new()
 	server_peer.create_server(Server_port)

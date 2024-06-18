@@ -7,13 +7,15 @@ var angleBefore = 0
 var speed = 200
 var turnDirection = 1
 var turnConstant = PI
-var amo = 3
 var defaultBurtAmount = 50
 var defaultBurtAmountBurst = 100
 var do_boost_visuals = false
 var stop_boost_visuals = false
 
+@export var amo = 3
 
+@onready var bullet = preload("res://player/bullet.tscn")
+@onready var leval = get_tree().get_root().get_node("leval_debug")
 @onready var colors = [$Purp, $Green, $Red, $Blue]
 @onready var redship = colors[color].get_children()[0]
 @onready var boostship = colors[color].get_children()[1]
@@ -83,7 +85,7 @@ func boostVisuals(): # change particals when boosting
 func dash(): #dash
 	
 	%PlayerInput.boostVisuals()
-	rotation = angleBefore + PI/2.5
+	rotate(-PI/2)
 	velocity = Vector2(150 * cos(rotation), 150 * sin(rotation))
 	dashCooldown.start()
 
@@ -138,10 +140,6 @@ func _input(event):
 		$amorecharge.start()
 		
 	
-	if event.is_action_pressed("shoot") and amo > 0 and is_noodle == false:
-		Events.emit_signal("shooting")
-		shootSound.play()
-		amo -= 1
 	
 	if event.is_action_pressed("esc"):
 		# TODO: disconnecting, closing server
@@ -186,5 +184,4 @@ func _physics_process(delta):
 		velocity.y = lerp(velocity.y, float(0), delta * .8)
 		
 	position = Vector2(wrapf(position.x, 0, SIZE.x), wrapf(position.y, 0, SIZE.y))
-
 

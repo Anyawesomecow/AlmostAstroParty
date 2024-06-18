@@ -116,6 +116,8 @@ var player = preload("res://player/player.tscn")
 
 var shipspawn_node
 
+var players = {}
+
 func become_host():
 	
 	host_mode_enabled = true
@@ -145,6 +147,7 @@ func add_player_to_game(id: int):
 	var player_to_add = player.instantiate()
 	player_to_add.player_id = id
 	player_to_add.player_name = str(id)
+	players[id] = player_to_add
 	
 	shipspawn_node.add_child(player_to_add, true)
 

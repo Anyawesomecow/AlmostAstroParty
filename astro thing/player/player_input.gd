@@ -19,7 +19,6 @@ var turnDirection = 1
 func _ready():
 	server_rotation += turnConstant * turnDirection
 	
-	set_process(get_multiplayer_authority() == multiplayer.get_unique_id())
 	
 	if get_multiplayer_authority() != multiplayer.get_unique_id():
 		set_process(false)
@@ -39,6 +38,18 @@ func boostVisuals(): # change particals when boosting
 	boost_particals.rpc()
 
 @rpc("call_local")
+func shoot():
+	if multiplayer.is_server():
+		var bullet_ready = player.bullet.instantiate()
+		bullet_ready.position = player.position + Vector2(cos(player.rotation) * 20, sin(player.rotation) * 20)
+		bullet_ready.rotation = player.rotation
+		var bullet_holder = player.leval.get_node("bullet_holder")
+		bullet_holder.add_child(bullet_ready, true)
+		player.shootSound.play()
+		player.amo -= 1
+
+
+@rpc("call_local")
 func boost_particals():
 	if multiplayer.is_server():
 		player.do_boost_visuals = true
@@ -46,7 +57,9 @@ func boost_particals():
 
 func _physics_process(delta):
 	
-	
+	if Input.is_action_just_pressed("shoot"):
+		if player.amo > 0 and player.is_noodle == false:
+			shoot.rpc()
 	
 	
 	

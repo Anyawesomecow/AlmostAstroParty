@@ -53,7 +53,6 @@ environment = SubResource("Environment_kjfno")
 [node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://player/bullet.tscn")
 spawn_path = NodePath("../bullet_holder")
-spawn_limit = 17
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
