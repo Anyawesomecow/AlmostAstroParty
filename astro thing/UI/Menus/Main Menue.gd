@@ -10,6 +10,7 @@ func _ready(): # Called when the node enters the scene tree for the first time. 
 	joinButton.hide()
 	settingsButton.hide()
 	hostButton.hide()
+	$OptionsMenu.hide()
 
 func _on_start_pressed():# starts game
 	startButton.hide()
@@ -19,6 +20,10 @@ func _on_start_pressed():# starts game
 	hostButton.show()
 
 
+func _input(event):
+	if event.is_action_pressed("esc"):
+		$OptionsMenu.hide()
+
 func _on_join_pressed():
 	Lobby.is_server = false
 	get_tree().change_scene_to_file("res://levals/leval.tscn")
@@ -26,7 +31,7 @@ func _on_join_pressed():
 	
 
 func _on_settings_pressed():
-	pass # Replace with function body.
+	$OptionsMenu.show()
 
 func _on_host_pressed():
 	Lobby.is_server = true

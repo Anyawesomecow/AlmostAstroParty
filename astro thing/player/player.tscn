@@ -282,6 +282,7 @@ shape = SubResource("CircleShape2D_q8b01")
 
 [node name="shootSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_t4ea3")
+bus = &"sfx"
 
 [node name="deathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_t4ea3")

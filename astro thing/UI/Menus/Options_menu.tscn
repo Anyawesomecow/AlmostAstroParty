@@ -1,0 +1,161 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvobw60cr8xuo"]
+
+[ext_resource type="Script" path="res://UI/Menus/Options_menu.gd" id="1_clpl0"]
+[ext_resource type="Script" path="res://UI/Menus/Master_volume.gd" id="2_hgsc6"]
+[ext_resource type="Script" path="res://UI/Menus/music.gd" id="3_d5qbu"]
+[ext_resource type="Script" path="res://UI/Menus/sfx.gd" id="4_fcseb"]
+
+[node name="OptionsMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_clpl0")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="audio" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/audio/MarginContainer"]
+layout_mode = 2
+
+[node name="volume" type="Label" parent="TabContainer/audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Volume"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Master_lable" type="Label" parent="TabContainer/audio/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Master"
+
+[node name="Master" type="HSlider" parent="TabContainer/audio/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+script = ExtResource("2_hgsc6")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="music_lable" type="Label" parent="TabContainer/audio/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Music"
+
+[node name="music" type="HSlider" parent="TabContainer/audio/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("3_d5qbu")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="effects" type="Label" parent="TabContainer/audio/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "sound effects"
+
+[node name="sfx" type="HSlider" parent="TabContainer/audio/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_fcseb")
+
+[node name="msc" type="Label" parent="TabContainer/audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "misc"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="TabContainer/audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="volume_destortion" type="Label" parent="TabContainer/audio/MarginContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "volume destortion"
+
+[node name="CheckBox" type="CheckBox" parent="TabContainer/audio/MarginContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+
+[node name="Graphics" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Graphics"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Graphics/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="fullscreen" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "fullscreen"
+
+[node name="CheckBox" type="CheckBox" parent="TabContainer/Graphics/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Controlls" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Controlls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controlls/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Controlls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="action_list" type="VBoxContainer" parent="TabContainer/Controlls/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="rester" type="Button" parent="TabContainer/Controlls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "reset keybinds"
+
+[node name="accsesability" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/accsesability"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="TabContainer/Controlls/MarginContainer/VBoxContainer/rester" to="." method="_on_rester_pressed"]

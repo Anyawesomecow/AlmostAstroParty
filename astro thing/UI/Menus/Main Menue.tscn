@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0yxpjlkwwg6p"]
+[gd_scene load_steps=15 format=3 uid="uid://b0yxpjlkwwg6p"]
 
 [ext_resource type="Script" path="res://UI/Menus/Main Menue.gd" id="1_dn3mb"]
 [ext_resource type="Theme" uid="uid://dqt8ckud00u6" path="res://UI/new_theme.tres" id="2_wlpdl"]
 [ext_resource type="AudioStream" uid="uid://c6htprld4rcik" path="res://audio/astroparty menue music.mp3" id="3_0at6g"]
+[ext_resource type="PackedScene" uid="uid://bvobw60cr8xuo" path="res://UI/Menus/Options_menu.tscn" id="4_4es18"]
 
 [sub_resource type="SystemFont" id="SystemFont_kbhii"]
 font_names = PackedStringArray("Minecraft")
@@ -110,6 +111,10 @@ text = "Host"
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_0at6g")
 autoplay = true
+bus = &"music"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("4_4es18")]
+layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Join" to="." method="_on_join_pressed"]
