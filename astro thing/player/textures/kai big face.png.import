@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4k3aarp23v4v"
-path="res://.godot/imported/Noodle.png-fe8b27904817378c04bd53fbc88dd3cb.ctex"
+uid="uid://5vdfw1i5xm3o"
+path="res://.godot/imported/kai big face.png-b25febb89a2d9bcd4870df221071b57b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/Noodle.png"
-dest_files=["res://.godot/imported/Noodle.png-fe8b27904817378c04bd53fbc88dd3cb.ctex"]
+source_file="res://player/textures/kai big face.png"
+dest_files=["res://.godot/imported/kai big face.png-b25febb89a2d9bcd4870df221071b57b.ctex"]
 
 [params]
 

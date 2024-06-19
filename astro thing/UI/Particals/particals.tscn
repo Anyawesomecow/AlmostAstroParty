@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c5w5uhtyce254"]
+
+[node name="Particals" type="Node2D"]
+
+[node name="ship_particals" type="Node2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ship_particals"]

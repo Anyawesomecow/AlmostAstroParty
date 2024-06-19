@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpr8w4d86n1nx"
-path="res://.godot/imported/Green_Ship_Animated.png-6f4476621a70768870a9ab8722022356.ctex"
+uid="uid://lh5qiucwhwuw"
+path="res://.godot/imported/purple_ship_animated.png-8fff8730b4193af01b650e0e2dcb26df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/Green_Ship_Animated.png"
-dest_files=["res://.godot/imported/Green_Ship_Animated.png-6f4476621a70768870a9ab8722022356.ctex"]
+source_file="res://player/textures/purple_ship_animated.png"
+dest_files=["res://.godot/imported/purple_ship_animated.png-8fff8730b4193af01b650e0e2dcb26df.ctex"]
 
 [params]
 

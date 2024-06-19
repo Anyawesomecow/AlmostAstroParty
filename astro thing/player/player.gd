@@ -39,11 +39,10 @@ var player_name
 @export var player_id := 1 :
 	set(id):
 		player_id = id
-		print(id)
 		%PlayerInput.set_multiplayer_authority(id)
 
 func _ready(): # onreadythings
-	shipcolor()
+	%PlayerInput.shipcolor.rpc()
 	boostship.hide()
 	noodle.hide()
 	redship.show()
@@ -60,19 +59,10 @@ func _ready(): # onreadythings
 	shipParticals4.amount = defaultBurtAmountBurst
 
 
-func shipcolor():
-	colors[0].hide()
-	colors[1].hide()
-	colors[2].hide()
-	colors[3].hide()
-	colors[color].show()
-
 
 	
 func boostVisuals(): # change particals when boosting
 	if multiplayer.get_unique_id() == player_id || multiplayer.multiplayer_peer:
-		print("bwamp")
-		print(noodle)
 		noodle.hide()
 		redship.hide()
 		boostship.show()
@@ -120,7 +110,6 @@ func _on_dash_cooldown_timeout_visuals():
 	shipParticals2.emitting = true
 	shipParticals3.emitting = false
 	shipParticals4.emitting = false
-	print("gump")
 	boostship.hide()
 	redship.show()
 

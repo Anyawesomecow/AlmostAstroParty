@@ -46,6 +46,17 @@ func shoot():
 		$"../amorecharge".start()
 		player.amo -= 1
 
+@rpc("call_local")
+func shipcolor():
+	player.colors[0].hide()
+	player.colors[1].hide()
+	player.colors[2].hide()
+	player.colors[3].hide()
+	player.colors[player.color].show()
+
+
+
+
 
 @rpc("call_local")
 func boost_particals():

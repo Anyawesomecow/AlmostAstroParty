@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfjo2eogxmjr1"
-path="res://.godot/imported/chuck face.png-d11c8b800c78f60eb512d1ed45d6b72c.ctex"
+uid="uid://4k3aarp23v4v"
+path="res://.godot/imported/Noodle.png-857b9d9f9e09ce478ffaf07946365673.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/chuck face.png"
-dest_files=["res://.godot/imported/chuck face.png-d11c8b800c78f60eb512d1ed45d6b72c.ctex"]
+source_file="res://player/textures/Noodle.png"
+dest_files=["res://.godot/imported/Noodle.png-857b9d9f9e09ce478ffaf07946365673.ctex"]
 
 [params]
 

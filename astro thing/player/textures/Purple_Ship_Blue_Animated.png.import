@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckd4k0h2sfumq"
-path="res://.godot/imported/Purple_Ship_Blue_Animated.png-79af789ebff188cfb343175418858a3d.ctex"
+path="res://.godot/imported/Purple_Ship_Blue_Animated.png-d720e23989916d4ee326aced55b9767f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/Purple_Ship_Blue_Animated.png"
-dest_files=["res://.godot/imported/Purple_Ship_Blue_Animated.png-79af789ebff188cfb343175418858a3d.ctex"]
+source_file="res://player/textures/Purple_Ship_Blue_Animated.png"
+dest_files=["res://.godot/imported/Purple_Ship_Blue_Animated.png-d720e23989916d4ee326aced55b9767f.ctex"]
 
 [params]
 

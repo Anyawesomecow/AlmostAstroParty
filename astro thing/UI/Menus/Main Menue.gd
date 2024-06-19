@@ -26,7 +26,7 @@ func _input(event):
 
 func _on_join_pressed():
 	Lobby.is_server = false
-	get_tree().change_scene_to_file("res://levals/leval.tscn")
+	get_tree().change_scene_to_file("res://UI/Menus/charecterSelection.tscn")
 	
 	
 
@@ -35,4 +35,4 @@ func _on_settings_pressed():
 
 func _on_host_pressed():
 	Lobby.is_server = true
-	get_tree().change_scene_to_file("res://levals/leval.tscn")
+	get_tree().change_scene_to_file("res://UI/Menus/charecterSelection.tscn")

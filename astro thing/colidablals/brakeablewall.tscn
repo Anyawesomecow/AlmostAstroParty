@@ -3,16 +3,19 @@
 [ext_resource type="Texture2D" uid="uid://bolekku2arck" path="res://UI/textures/weird Kam picture.png" id="1_1qavf"]
 [ext_resource type="Script" path="res://colidablals/brakeablewall.gd" id="1_qpfgn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkttf"]
-size = Vector2(113.5, 144.5)
-
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1y5mb"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkttf"]
+size = Vector2(113.5, 144.5)
+
 [node name="breakable" type="Node2D"]
 script = ExtResource("1_qpfgn")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_1y5mb")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -31,8 +34,5 @@ collision_mask = 2
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox"]
 position = Vector2(47, 73.5)
 shape = SubResource("RectangleShape2D_nkttf")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_1y5mb")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

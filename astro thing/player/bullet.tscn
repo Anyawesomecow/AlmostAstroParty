@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://4r1ens1kmeke"]
 
 [ext_resource type="Script" path="res://player/bullet.gd" id="1_m3d1c"]
-[ext_resource type="Texture2D" uid="uid://sflim16t2enk" path="res://player/bullet.png" id="2_bhcye"]
+[ext_resource type="Texture2D" uid="uid://sflim16t2enk" path="res://player/textures/bullet.png" id="2_unyhk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ucrl"]
 radius = 5.09902
@@ -20,7 +20,7 @@ script = ExtResource("1_m3d1c")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-0.0695362, 0.184304)
 scale = Vector2(0.671875, 0.671875)
-texture = ExtResource("2_bhcye")
+texture = ExtResource("2_unyhk")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

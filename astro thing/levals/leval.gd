@@ -3,9 +3,14 @@ extends Node2D
 
 @onready var bullet = preload("res://player/bullet.tscn")
 @onready var Player = preload("res://player/player.tscn")
+@onready var breakableWall = preload("res://colidablals/brakeablewall.tscn")
 @onready var leval = $"."
 
 func _ready():
+	var breakableWallReady = breakableWall.instantiate()
+	
+	$"wall spawner".add_child(breakableWallReady)
+	
 	if Lobby.is_server == true:
 		Lobby.become_host()
 	else:

@@ -118,6 +118,8 @@ var player = preload("res://player/player.tscn")
 
 var shipspawn_node
 
+var collor_to_instanciate
+
 var players = {}
 
 func become_host():
@@ -125,7 +127,6 @@ func become_host():
 	host_mode_enabled = true
 	
 	shipspawn_node = get_tree().get_current_scene().get_node("shipholder")
-	print(shipspawn_node)
 	
 	var server_peer = ENetMultiplayerPeer.new()
 	server_peer.create_server(Server_port)
@@ -149,6 +150,7 @@ func add_player_to_game(id: int):
 	var player_to_add = player.instantiate()
 	player_to_add.player_id = id
 	player_to_add.player_name = str(id)
+	player_to_add.color = collor_to_instanciate
 	players[id] = player_to_add
 	
 	shipspawn_node.add_child(player_to_add, true)

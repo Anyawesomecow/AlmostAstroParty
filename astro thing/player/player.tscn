@@ -1,13 +1,14 @@
-[gd_scene load_steps=28 format=3 uid="uid://dxsa1l6upmplg"]
+[gd_scene load_steps=31 format=3 uid="uid://dxsa1l6upmplg"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_cqx27"]
 [ext_resource type="Script" path="res://player/player_input.gd" id="2_7p6yb"]
-[ext_resource type="Texture2D" uid="uid://lh5qiucwhwuw" path="res://player/purple_ship_animated.png" id="2_cy1n1"]
-[ext_resource type="Texture2D" uid="uid://ckd4k0h2sfumq" path="res://player/Purple_Ship_Blue_Animated.png" id="3_gcnm1"]
-[ext_resource type="Texture2D" uid="uid://cpr8w4d86n1nx" path="res://player/Green_Ship_Animated.png" id="4_ogn0k"]
-[ext_resource type="Texture2D" uid="uid://4k3aarp23v4v" path="res://player/Noodle.png" id="4_u4w5q"]
-[ext_resource type="Texture2D" uid="uid://y2s3wnwhuhns" path="res://player/green_ship_blue_animated.png" id="5_3yijn"]
+[ext_resource type="Texture2D" uid="uid://lh5qiucwhwuw" path="res://player/textures/purple_ship_animated.png" id="4_8huof"]
+[ext_resource type="Texture2D" uid="uid://ckd4k0h2sfumq" path="res://player/textures/Purple_Ship_Blue_Animated.png" id="5_3kpdl"]
 [ext_resource type="AudioStream" uid="uid://g0y7poortp5h" path="res://player/shoot noise.mp3" id="5_t4ea3"]
+[ext_resource type="Texture2D" uid="uid://4k3aarp23v4v" path="res://player/textures/Noodle.png" id="6_n4g5s"]
+[ext_resource type="Texture2D" uid="uid://cpr8w4d86n1nx" path="res://player/textures/Green_Ship_Animated.png" id="7_4rloy"]
+[ext_resource type="Texture2D" uid="uid://y2s3wnwhuhns" path="res://player/textures/green_ship_blue_animated.png" id="8_x5bbf"]
+[ext_resource type="Texture2D" uid="uid://d0pdt8ol7ukv2" path="res://player/textures/Green_Noodle.png" id="9_vcm3j"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vulvy"]
 properties/0/path = NodePath(".:player_id")
@@ -34,9 +35,6 @@ properties/6/replication_mode = 2
 properties/7/path = NodePath(".:is_noodle")
 properties/7/spawn = true
 properties/7/replication_mode = 1
-properties/8/path = NodePath(".:color")
-properties/8/spawn = true
-properties/8/replication_mode = 1
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qopl4"]
 properties/0/path = NodePath("PlayerInput:server_rotation")
@@ -63,6 +61,15 @@ properties/6/replication_mode = 2
 properties/7/path = NodePath("Purp/noodle:visible")
 properties/7/spawn = true
 properties/7/replication_mode = 2
+properties/8/path = NodePath("Green/ship_red:visible")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("Green/ship_blue:visible")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath("Green/noodle:visible")
+properties/10/spawn = true
+properties/10/replication_mode = 1
 
 [sub_resource type="Curve" id="Curve_bb2o5"]
 min_value = -200.0
@@ -79,11 +86,11 @@ radius = 9.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_q8b01"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ganeh"]
-atlas = ExtResource("2_cy1n1")
+atlas = ExtResource("4_8huof")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2y7ta"]
-atlas = ExtResource("2_cy1n1")
+atlas = ExtResource("4_8huof")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b81gg"]
@@ -101,11 +108,11 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_csyv3"]
-atlas = ExtResource("3_gcnm1")
+atlas = ExtResource("5_3kpdl")
 region = Rect2(0, 0, 32, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p0p4k"]
-atlas = ExtResource("3_gcnm1")
+atlas = ExtResource("5_3kpdl")
 region = Rect2(32, 0, 32, 36)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hogwg"]
@@ -129,11 +136,11 @@ scale_min = 0.01
 scale_max = 0.01
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rdhof"]
-atlas = ExtResource("4_ogn0k")
+atlas = ExtResource("7_4rloy")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u8joq"]
-atlas = ExtResource("4_ogn0k")
+atlas = ExtResource("7_4rloy")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bxdo3"]
@@ -151,11 +158,11 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0vnl0"]
-atlas = ExtResource("5_3yijn")
+atlas = ExtResource("8_x5bbf")
 region = Rect2(0, 0, 32, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8xu4t"]
-atlas = ExtResource("5_3yijn")
+atlas = ExtResource("8_x5bbf")
 region = Rect2(32, 0, 32, 36)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fp2qx"]
@@ -171,6 +178,11 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_g1hmv"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0eolc"]
+gradient = SubResource("Gradient_g1hmv")
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cqx27")
@@ -303,7 +315,7 @@ sprite_frames = SubResource("SpriteFrames_hogwg")
 position = Vector2(-1.43051e-06, 9.53674e-07)
 rotation = 1.5708
 scale = Vector2(0.859557, 0.859557)
-texture = ExtResource("4_u4w5q")
+texture = ExtResource("6_n4g5s")
 
 [node name="noodle_particals" type="Node2D" parent="Purp"]
 
@@ -327,12 +339,13 @@ frame_progress = 0.234719
 position = Vector2(-1.43051e-06, 9.53674e-07)
 rotation = 1.5708
 scale = Vector2(0.859557, 0.859557)
-texture = ExtResource("4_u4w5q")
+texture = ExtResource("9_vcm3j")
 
 [node name="noodle_particals" type="Node2D" parent="Green"]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Green/noodle_particals"]
 process_material = SubResource("ParticleProcessMaterial_4w38y")
+texture = SubResource("GradientTexture1D_0eolc")
 
 [node name="Red" type="Node2D" parent="."]
 
@@ -351,7 +364,7 @@ frame_progress = 0.234719
 position = Vector2(-1.43051e-06, 9.53674e-07)
 rotation = 1.5708
 scale = Vector2(0.859557, 0.859557)
-texture = ExtResource("4_u4w5q")
+texture = ExtResource("6_n4g5s")
 
 [node name="noodle_particals" type="Node2D" parent="Red"]
 
@@ -375,7 +388,7 @@ frame_progress = 0.234719
 position = Vector2(-1.43051e-06, 9.53674e-07)
 rotation = 1.5708
 scale = Vector2(0.859557, 0.859557)
-texture = ExtResource("4_u4w5q")
+texture = ExtResource("6_n4g5s")
 
 [node name="noodle_particals" type="Node2D" parent="Blue"]
 
