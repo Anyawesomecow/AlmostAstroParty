@@ -108,13 +108,12 @@ func _on_area_2d_area_entered(area): # getting hit stuff
 		$dashCooldown.stop()
 		$denoodling.start()
 		is_noodle = true
-		boostship.hide()
-		redship.show()
 		shipParticals1.emitting = false
 		shipParticals2.emitting = false
 		shipParticals3.emitting = false
 		shipParticals4.emitting = false
 		noodleParticals.emitting = true
+		boostship.hide()
 		redship.hide()
 		noodle.show()
 
@@ -138,8 +137,6 @@ func _on_amorecharge_timeout():# adds amo
 func _input(event):
 	if amo < 3 and $amorecharge.time_left == 0:
 		$amorecharge.start()
-		
-	
 	
 	if event.is_action_pressed("esc"):
 		# TODO: disconnecting, closing server
