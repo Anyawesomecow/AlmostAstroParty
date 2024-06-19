@@ -268,7 +268,6 @@ one_shot = true
 
 [node name="amorecharge" type="Timer" parent="."]
 wait_time = 2.0
-one_shot = true
 
 [node name="denoodling" type="Timer" parent="."]
 wait_time = 10.0
@@ -383,6 +382,6 @@ texture = ExtResource("4_u4w5q")
 process_material = SubResource("ParticleProcessMaterial_4w38y")
 
 [connection signal="timeout" from="dashCooldown" to="." method="_on_dash_cooldown_timeout"]
-[connection signal="timeout" from="amorecharge" to="." method="_on_amorecharge_timeout"]
+[connection signal="timeout" from="amorecharge" to="PlayerInput" method="_on_amorecharge_timeout"]
 [connection signal="timeout" from="denoodling" to="." method="_on_denoodling_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -83,11 +83,7 @@ func boostVisuals(): # change particals when boosting
 	
 	
 func dash(): #dash
-	
-	%PlayerInput.boostVisuals()
-	rotate(-PI/2)
-	velocity = Vector2(150 * cos(rotation), 150 * sin(rotation))
-	dashCooldown.start()
+	%PlayerInput.dash()
 
 func _on_denoodling_timeout(): # un noodling
 
@@ -131,8 +127,7 @@ func _on_dash_cooldown_timeout_visuals():
 func _on_dash_cooldown_timeout(): # puts partcals back to normal after dash
 	%PlayerInput.stop_boost()
 
-func _on_amorecharge_timeout():# adds amo
-	amo += 1
+
 
 func _input(event):
 	if amo < 3 and $amorecharge.time_left == 0:

@@ -15,6 +15,8 @@ var turnDirection = 1
 
 func _ready():
 	server_rotation += turnConstant * turnDirection
+	if multiplayer.is_server():
+		$"../amorecharge".start()
 	if get_multiplayer_authority() != multiplayer.get_unique_id():
 		set_process(false)
 
@@ -41,6 +43,7 @@ func shoot():
 		var bullet_holder = player.leval.get_node("bullet_holder")
 		bullet_holder.add_child(bullet_ready, true)
 		player.shootSound.play()
+		$"../amorecharge".start()
 		player.amo -= 1
 
 
@@ -48,6 +51,14 @@ func shoot():
 func boost_particals():
 	if multiplayer.is_server() and multiplayer.get_remote_sender_id() == player.player_id:
 		player.do_boost_visuals = true
+
+
+func dash(): #dash
+	
+	%PlayerInput.boostVisuals()
+	server_rotation = server_rotation + turnConstant/4
+	player.velocity = Vector2(150 * cos(server_rotation), 150 * sin(server_rotation))
+	player.dashCooldown.start()
 
 
 func _physics_process(delta):
@@ -59,3 +70,8 @@ func _physics_process(delta):
 	
 	if not multiplayer.is_server() || Lobby.host_mode_enabled == true:
 		pass
+
+
+func _on_amorecharge_timeout():
+	if player.amo >= 3: return
+	player.amo += 1

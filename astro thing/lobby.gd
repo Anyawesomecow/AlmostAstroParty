@@ -110,6 +110,8 @@ func _on_connection_disestablished():
 const Server_port = 8080
 const Server_IP = "127.0.0.1"
 
+var is_server
+
 var host_mode_enabled = false
 
 var player = preload("res://player/player.tscn")
