@@ -155,6 +155,7 @@ func add_player_to_game(id: int):
 	players[id] = player_to_add
 	
 	shipspawn_node.add_child(player_to_add, true)
+	
 
 func del_player(id: int):
 	if not shipspawn_node.has_node(str(id)):

@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-var color = 0
 
 var is_noodle = false
 var angleBefore = 0
@@ -13,6 +12,7 @@ var do_boost_visuals = false
 var stop_boost_visuals = false
 
 @export var amo = 3
+@export var color = 0
 
 @onready var bullet = preload("res://player/bullet.tscn")
 @onready var leval = get_tree().get_root().get_node("leval_debug")
@@ -41,7 +41,15 @@ var player_name
 		player_id = id
 		%PlayerInput.set_multiplayer_authority(id)
 
+func hide_extranuis_ships():
+	colors[0].hide()
+	colors[1].hide()
+	colors[2].hide()
+	colors[3].hide()
+
 func _ready(): # onreadythings
+	%PlayerInput.collorstuff.rpc()
+	hide_extranuis_ships()
 	%PlayerInput.shipcolor.rpc()
 	boostship.hide()
 	noodle.hide()

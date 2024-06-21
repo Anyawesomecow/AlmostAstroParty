@@ -48,14 +48,17 @@ func shoot():
 
 @rpc("call_local")
 func shipcolor():
+	
 	player.colors[0].hide()
 	player.colors[1].hide()
 	player.colors[2].hide()
 	player.colors[3].hide()
 	player.colors[player.color].show()
 
-
-
+@rpc("call_local")
+func collorstuff():
+	if is_multiplayer_authority():
+		player.color = Events.collor_to_instanciate
 
 
 @rpc("call_local")
