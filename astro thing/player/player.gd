@@ -12,7 +12,7 @@ var do_boost_visuals = false
 var stop_boost_visuals = false
 
 @export var amo = 3
-@export var color = 0
+@export var color = Events.collor_to_instanciate
 
 @onready var bullet = preload("res://player/bullet.tscn")
 @onready var leval = get_tree().get_root().get_node("leval_debug")
@@ -41,15 +41,18 @@ var player_name
 		player_id = id
 		%PlayerInput.set_multiplayer_authority(id)
 
-func hide_extranuis_ships():
+func shipcolor():
+	
 	colors[0].hide()
 	colors[1].hide()
 	colors[2].hide()
 	colors[3].hide()
+	colors[color].show()
+
 
 func _ready(): # onreadythings
 	%PlayerInput.collorstuff.rpc()
-	hide_extranuis_ships()
+	%PlayerInput.hide_extranuis_ships.rpc()
 	%PlayerInput.shipcolor.rpc()
 	boostship.hide()
 	noodle.hide()

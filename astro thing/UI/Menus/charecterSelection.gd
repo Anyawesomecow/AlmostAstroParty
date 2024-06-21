@@ -21,13 +21,10 @@ func _on_red_pressed():
 
 func _on_green_pressed():
 	Events.collor_to_instanciate = 1
-	Lobby.collor_to_instanciate = 1
-	print(Lobby.collor_to_instanciate)
 	get_tree().change_scene_to_file("res://levals/leval.tscn")
 
 
 func _on_purp_pressed():
 	Events.collor_to_instanciate = 0
-	Lobby.collor_to_instanciate = 1
-	print(Lobby.collor_to_instanciate)
+
 	get_tree().change_scene_to_file("res://levals/leval.tscn")

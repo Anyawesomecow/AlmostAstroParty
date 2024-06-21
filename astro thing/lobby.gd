@@ -118,7 +118,6 @@ var player = preload("res://player/player.tscn")
 
 var shipspawn_node
 
-var collor_to_instanciate
 
 var players = {}
 
@@ -150,8 +149,7 @@ func add_player_to_game(id: int):
 	var player_to_add = player.instantiate()
 	player_to_add.player_id = id
 	player_to_add.player_name = str(id)
-	print(collor_to_instanciate)
-	player_to_add.color = collor_to_instanciate
+	player_to_add.color = Events.collor_to_instanciate
 	players[id] = player_to_add
 	
 	shipspawn_node.add_child(player_to_add, true)

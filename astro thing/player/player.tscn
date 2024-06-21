@@ -35,9 +35,18 @@ properties/6/replication_mode = 2
 properties/7/path = NodePath(".:is_noodle")
 properties/7/spawn = true
 properties/7/replication_mode = 1
-properties/8/path = NodePath(".:color")
+properties/8/path = NodePath("Purp:visible")
 properties/8/spawn = true
 properties/8/replication_mode = 1
+properties/9/path = NodePath("Green:visible")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath("Red:visible")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+properties/11/path = NodePath("Blue:visible")
+properties/11/spawn = true
+properties/11/replication_mode = 1
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qopl4"]
 properties/0/path = NodePath("PlayerInput:server_rotation")

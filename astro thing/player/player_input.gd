@@ -48,12 +48,15 @@ func shoot():
 
 @rpc("call_local")
 func shipcolor():
-	
+	if multiplayer.is_server() and multiplayer.get_remote_sender_id() == player.player_id:
+		player.colors[player.color].show()
+
+@rpc("call_local")
+func hide_extranuis_ships():
 	player.colors[0].hide()
 	player.colors[1].hide()
 	player.colors[2].hide()
 	player.colors[3].hide()
-	player.colors[player.color].show()
 
 @rpc("call_local")
 func collorstuff():
@@ -78,6 +81,9 @@ func dash(): #dash
 func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot"):
 		shoot.rpc_id(1)
+		%PlayerInput.collorstuff.rpc()
+		%PlayerInput.hide_extranuis_ships.rpc()
+		%PlayerInput.shipcolor.rpc()
 	
 	if Input.is_action_pressed("turn"):
 		server_rotation += turnConstant * turnDirection * delta
