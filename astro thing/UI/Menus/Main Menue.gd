@@ -5,7 +5,13 @@ extends Control
 @onready var hostButton = $VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/host
 
 
+
+
 func _ready(): # Called when the node enters the scene tree for the first time. lets you use tab and enter in menue
+	if Events.username == null:
+		$VBoxContainer.hide()
+	else:
+		$VBoxContainer.show()
 	startButton.grab_focus()
 	joinButton.hide()
 	settingsButton.hide()
@@ -36,3 +42,10 @@ func _on_settings_pressed():
 func _on_host_pressed():
 	Lobby.become_host()
 	get_tree().change_scene_to_file("res://UI/Menus/charecterSelection.tscn")
+
+
+func _on_button_pressed():
+	if $"name window/VBoxContainer/TextEdit".text != "":
+		Events.username = $"name window/VBoxContainer/TextEdit".text
+		$"name window".hide()
+		$VBoxContainer.show()
