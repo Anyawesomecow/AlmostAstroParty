@@ -4,7 +4,6 @@ extends Control
 @export var player_id := 1 :
 	set(id):
 		player_id = id
-		%MultiplayerSynchronizer.set_multiplayer_authority(id)
 
 @onready var lables = [$MarginContainer/PanelContainer/VBoxContainer/HBoxContainer2/greenbox/Label,
 $MarginContainer/PanelContainer/VBoxContainer/HBoxContainer2/purpbox/Label]

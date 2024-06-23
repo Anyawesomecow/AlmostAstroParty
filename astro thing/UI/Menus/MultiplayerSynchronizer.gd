@@ -3,8 +3,7 @@ extends MultiplayerSynchronizer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if get_multiplayer_authority() != multiplayer.get_unique_id():
-		set_process(false)
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,7 +14,7 @@ func _process(delta):
 
 @rpc("call_local")
 func on_purp_pressed():
-
+	
 	Events.collor_to_instanciate = 0
 	$"..".lables[0].text = ""
 	$"..".lables[1].text = Events.username
