@@ -32,8 +32,7 @@ func _input(event):
 
 func _on_join_pressed():
 	Lobby.Join_as_player()
-	get_tree().change_scene_to_file("res://UI/Menus/charecterSelection.tscn")
-	
+	$VBoxContainer.hide()
 	
 
 func _on_settings_pressed():
@@ -41,7 +40,8 @@ func _on_settings_pressed():
 
 func _on_host_pressed():
 	Lobby.become_host()
-	get_tree().change_scene_to_file("res://UI/Menus/charecterSelection.tscn")
+	$VBoxContainer.hide()
+	
 
 
 func _on_button_pressed():

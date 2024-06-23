@@ -115,6 +115,7 @@ var is_server
 var host_mode_enabled = false
 
 var player = preload("res://player/player.tscn")
+var charecter_menue = preload("res://UI/Menus/charecterSelection.tscn")
 
 var shipspawn_node
 
@@ -126,6 +127,7 @@ var player_color = {}
 
 func become_host():
 	
+	
 	host_mode_enabled = true
 	
 	
@@ -135,9 +137,23 @@ func become_host():
 	
 	multiplayer.multiplayer_peer = server_peer
 	multiplayer.peer_connected.connect(add_player_to_game)
+	multiplayer.peer_connected.connect(add_menue)
+	
 	multiplayer.peer_disconnected.connect(del_player)
 	
 	
+	
+	
+	
+
+func add_menue(id: int):
+	if multiplayer.is_server():
+		var chrecterspawnmenue = get_tree().get_current_scene().get_node("MultiplayerSpawner")
+		var menue = charecter_menue.instantiate()
+		menue.player_id = id
+		print(id)
+		chrecterspawnmenue.add_child(menue, true)
+		
 
 
 func game_starts():
@@ -167,6 +183,8 @@ func add_player_to_game(id: int):
 	
 
 func del_player(id: int):
+	if shipspawn_node == null:
+		return
 	if not shipspawn_node.has_node(str(id)):
 		return
 		

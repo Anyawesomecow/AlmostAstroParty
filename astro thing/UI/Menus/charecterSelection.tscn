@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctcq8wmlla6vp"]
+[gd_scene load_steps=9 format=3 uid="uid://ctcq8wmlla6vp"]
 
 [ext_resource type="Script" path="res://UI/Menus/charecterSelection.gd" id="1_e4hgk"]
 [ext_resource type="Texture2D" uid="uid://4k3aarp23v4v" path="res://player/textures/Noodle.png" id="1_ocqvl"]
 [ext_resource type="Texture2D" uid="uid://d0pdt8ol7ukv2" path="res://player/textures/Green_Noodle.png" id="2_6wclm"]
+[ext_resource type="Script" path="res://UI/Menus/MultiplayerSynchronizer.gd" id="2_f1bo0"]
 [ext_resource type="Texture2D" uid="uid://chnykpqt4i7ms" path="res://player/textures/Red_Noodle.png" id="3_7tkkt"]
 [ext_resource type="Texture2D" uid="uid://bsrs8pyakmqcs" path="res://player/textures/Blue_Noodle.png" id="4_065kx"]
 [ext_resource type="Theme" uid="uid://dqt8ckud00u6" path="res://UI/new_theme.tres" id="5_akybh"]
@@ -28,7 +29,9 @@ grow_vertical = 2
 script = ExtResource("1_e4hgk")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+unique_name_in_owner = true
 replication_config = SubResource("SceneReplicationConfig_okc71")
+script = ExtResource("2_f1bo0")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
