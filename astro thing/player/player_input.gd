@@ -57,11 +57,9 @@ func hide_extranuis_ships():
 	player.colors[1].hide()
 	player.colors[2].hide()
 	player.colors[3].hide()
-
-@rpc("call_local")
-func collorstuff():
 	if is_multiplayer_authority():
 		player.color = Events.collor_to_instanciate
+
 
 
 @rpc("call_local")
@@ -81,9 +79,6 @@ func dash(): #dash
 func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot"):
 		shoot.rpc_id(1)
-		%PlayerInput.collorstuff.rpc()
-		%PlayerInput.hide_extranuis_ships.rpc()
-		%PlayerInput.shipcolor.rpc()
 	
 	if Input.is_action_pressed("turn"):
 		server_rotation += turnConstant * turnDirection * delta

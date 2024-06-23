@@ -25,7 +25,7 @@ func _input(event):
 		$OptionsMenu.hide()
 
 func _on_join_pressed():
-	Lobby.is_server = false
+	Lobby.Join_as_player()
 	get_tree().change_scene_to_file("res://UI/Menus/charecterSelection.tscn")
 	
 	
@@ -34,5 +34,5 @@ func _on_settings_pressed():
 	$OptionsMenu.show()
 
 func _on_host_pressed():
-	Lobby.is_server = true
+	Lobby.become_host()
 	get_tree().change_scene_to_file("res://UI/Menus/charecterSelection.tscn")

@@ -51,7 +51,6 @@ func shipcolor():
 
 
 func _ready(): # onreadythings
-	%PlayerInput.collorstuff.rpc()
 	%PlayerInput.hide_extranuis_ships.rpc()
 	%PlayerInput.shipcolor.rpc()
 	boostship.hide()

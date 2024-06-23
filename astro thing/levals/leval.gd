@@ -9,12 +9,11 @@ extends Node2D
 func _ready():
 	var breakableWallReady = breakableWall.instantiate()
 	
+	Events.addingPlayers.emit()
+	
 	$"wall spawner".add_child(breakableWallReady)
 	
-	if Lobby.is_server == true:
-		Lobby.become_host()
-	else:
-		Lobby.Join_as_player()
+	
 	# TODO: handle local-multiplayer (or dont)
 	# signal to server that we loaded
 	#Lobby.player_loaded.rpc_id(1)
