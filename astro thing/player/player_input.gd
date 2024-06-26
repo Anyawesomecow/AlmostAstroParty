@@ -47,16 +47,39 @@ func shoot():
 		player.amo -= 1
 
 @rpc("call_local")
+func noodle_visuals():
+	player.colors[player.color][1].hide()
+	player.colors[player.color][0].hide()
+	player.colors[player.color][2].show()
+
+@rpc("call_local")
+func denoodle_visuals():
+	player.colors[player.color][0].show()
+	player.colors[player.color][2].hide()
+
+@rpc("call_local")
+func dash_visuals():
+	player.colors[player.color][2].hide()
+	player.colors[player.color][0].hide()
+	player.colors[player.color][1].show()
+
+@rpc("call_local")
+func undash_visuals():
+	player.colors[player.color][1].hide()
+	player.colors[player.color][0].show()
+
+
+@rpc("call_local")
 func shipcolor():
-	if multiplayer.is_server() and multiplayer.get_remote_sender_id() == player.player_id:
-		player.colors[player.color].show()
+	if multiplayer.get_unique_id() == player.player_id:
+		for i in player.colors[player.color]:
+			i.show()
 
 @rpc("call_local")
 func hide_extranuis_ships():
-	player.colors[0].hide()
-	player.colors[1].hide()
-	player.colors[2].hide()
-	player.colors[3].hide()
+	for i in player.colors:
+		for j in i:
+			j.hide()
 	if is_multiplayer_authority():
 		player.color = Events.collor_to_instanciate
 

@@ -10,22 +10,16 @@ var defaultBurtAmount = 50
 var defaultBurtAmountBurst = 100
 var do_boost_visuals = false
 var stop_boost_visuals = false
-
 @export var amo = 3
 @export var color = Events.collor_to_instanciate
-
 @onready var bullet = preload("res://player/bullet.tscn")
 @onready var leval = get_tree().get_root().get_node("leval_debug")
-@onready var colors = [$Purp, $Green, $Red, $Blue]
-@onready var redship = colors[color].get_children()[0]
-@onready var boostship = colors[color].get_children()[1]
-@onready var noodle = colors[color].get_children()[2]
+@onready var colors = [$Purp.get_children(), $Green.get_children(), $Red.get_children(), $Blue.get_children()]
 @onready var shipParticals1 = $particals_ship/CPUParticles2D
 @onready var shipParticals2 = $particals_ship/CPUParticles2D2
 @onready var shipParticals3 = $particals_ship/CPUParticles2D3
 @onready var shipParticals4 = $particals_ship/CPUParticles2D4
 @onready var SIZE = Vector2(512, 512)
-@onready var noodleParticals = colors[color].get_children()[3].get_children()[0]
 @onready var sprite = $Sprite2D
 @onready var dashTimer = $dashTimer
 @onready var dashCooldown = $dashCooldown
@@ -42,23 +36,21 @@ var player_name
 		%PlayerInput.set_multiplayer_authority(id)
 
 func shipcolor():
-	
-	colors[0].hide()
-	colors[1].hide()
-	colors[2].hide()
-	colors[3].hide()
-	colors[color].show()
-
+	pass
 
 func _ready(): # onreadythings
 	%PlayerInput.hide_extranuis_ships.rpc()
 	%PlayerInput.shipcolor.rpc()
-	boostship.hide()
-	noodle.hide()
-	redship.show()
-	redship.play()
-	boostship.play()
-	noodleParticals.emitting = false
+	
+	for i in colors:
+		for j in i:
+			j.hide
+	
+	colors[color][1].hide()
+	colors[color][2].hide()
+	colors[color][0].show()
+	colors[color][0].play()
+	colors[color][1].play()
 	shipParticals1.emitting = true
 	shipParticals2.emitting = true
 	shipParticals3.emitting = false
@@ -73,9 +65,7 @@ func _ready(): # onreadythings
 	
 func boostVisuals(): # change particals when boosting
 	if multiplayer.get_unique_id() == player_id || multiplayer.multiplayer_peer:
-		noodle.hide()
-		redship.hide()
-		boostship.show()
+		%PlayerInput.dash_visuals.rpc()
 		shipParticals1.emitting = false
 		shipParticals2.emitting = false
 		shipParticals3.emitting = true
@@ -87,15 +77,14 @@ func dash(): #dash
 
 func _on_denoodling_timeout(): # un noodling
 
-	redship.show()
-	noodle.hide()
+	%PlayerInput.denoodle_visuals.rpc()
 
 
 	shipParticals1.emitting = true
 	shipParticals2.emitting = true
-	noodleParticals.emitting = false
 
 	is_noodle = false
+
 
 func _on_area_2d_area_entered(area): # getting hit stuff
 	if is_noodle == true:
@@ -108,10 +97,7 @@ func _on_area_2d_area_entered(area): # getting hit stuff
 		shipParticals2.emitting = false
 		shipParticals3.emitting = false
 		shipParticals4.emitting = false
-		noodleParticals.emitting = true
-		boostship.hide()
-		redship.hide()
-		noodle.show()
+		%PlayerInput.noodle_visuals.rpc()
 
 
 func _on_dash_cooldown_timeout_visuals():
@@ -120,9 +106,8 @@ func _on_dash_cooldown_timeout_visuals():
 	shipParticals2.emitting = true
 	shipParticals3.emitting = false
 	shipParticals4.emitting = false
-	boostship.hide()
-	redship.show()
-
+	%PlayerInput.undash_visuals.rpc()
+	
 func _on_dash_cooldown_timeout(): # puts partcals back to normal after dash
 	%PlayerInput.stop_boost()
 
