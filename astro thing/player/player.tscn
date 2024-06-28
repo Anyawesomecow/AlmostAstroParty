@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://4k3aarp23v4v" path="res://player/textures/Noodle.png" id="6_kfcrk"]
 [ext_resource type="Texture2D" uid="uid://cpr8w4d86n1nx" path="res://player/textures/Green_Ship_Animated.png" id="7_2crpc"]
 [ext_resource type="Texture2D" uid="uid://y2s3wnwhuhns" path="res://player/textures/green_ship_blue_animated.png" id="8_3f1rm"]
-[ext_resource type="Texture2D" uid="uid://d0pdt8ol7ukv2" path="res://player/textures/Green_noodle.png" id="9_vcm3j"]
+[ext_resource type="Texture2D" uid="uid://d0pdt8ol7ukv2" path="res://player/textures/Green_Noodle.png" id="9_vcm3j"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vulvy"]
 properties/0/path = NodePath(".:player_id")
