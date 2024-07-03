@@ -14,13 +14,17 @@ var stop_boost_visuals = false
 @export var color = Events.collor_to_instanciate
 @onready var bullet = preload("res://player/bullet.tscn")
 @onready var leval = get_tree().get_root().get_node("leval_debug")
-@onready var colors = [$Purp.get_children(), $Green.get_children(), $Red.get_children(), $Blue.get_children()]
+@onready var colors = {
+	"purple": $Purp.get_children(),
+	"green": $Green.get_children(),
+	"red": $Red.get_children(),
+	"blue": $Blue.get_children()
+}
 @onready var shipParticals1 = $particals_ship/CPUParticles2D
 @onready var shipParticals2 = $particals_ship/CPUParticles2D2
 @onready var shipParticals3 = $particals_ship/CPUParticles2D3
 @onready var shipParticals4 = $particals_ship/CPUParticles2D4
 @onready var SIZE = Vector2(512, 512)
-@onready var sprite = $Sprite2D
 @onready var dashTimer = $dashTimer
 @onready var dashCooldown = $dashCooldown
 @onready var shootSound = $shootSound
@@ -28,7 +32,6 @@ var stop_boost_visuals = false
 @onready var input = $PlayerInput
 
 var player_name
-
 
 @export var player_id := 1 :
 	set(id):
@@ -42,9 +45,10 @@ func _ready(): # onreadythings
 	%PlayerInput.hide_extranuis_ships.rpc()
 	%PlayerInput.shipcolor.rpc()
 	
-	for i in colors:
+	for color_id in colors:
+		var i = colors[color_id]
 		for j in i:
-			j.hide
+			j.hide()
 	
 	colors[color][1].hide()
 	colors[color][2].hide()

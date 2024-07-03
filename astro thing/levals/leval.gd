@@ -8,17 +8,12 @@ extends Node2D
 
 func _ready():
 	var breakableWallReady = breakableWall.instantiate()
-	
 	Events.addingPlayers.emit()
-	
 	$"wall spawner".add_child(breakableWallReady)
-	
-	
-	# TODO: handle local-multiplayer (or dont)
-	# signal to server that we loaded
-	#Lobby.player_loaded.rpc_id(1)
-	#Lobby.server_closed.connect(_on_server_closed)
 
+	if !multiplayer.is_server(): return
+	for client_id in Lobby.clients:
+		Lobby.spawn_player(client_id)
 
 func _on_server_closed():
 	get_tree().change_scene_to_file("res://UI/Menus/Main Menue.gd")

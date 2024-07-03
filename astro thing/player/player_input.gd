@@ -5,7 +5,6 @@ var turnConstant = PI
 var turnDirection = 1
 
 
-@onready var boostship = $"../ship_blue"
 @onready var shipParticals1 = $"../particals_ship/CPUParticles2D"
 @onready var shipParticals2 = $"../particals_ship/CPUParticles2D2"
 @onready var shipParticals3 = $"../particals_ship/CPUParticles2D3"
@@ -77,13 +76,10 @@ func shipcolor():
 
 @rpc("call_local")
 func hide_extranuis_ships():
-	for i in player.colors:
+	for color_id in player.colors:
+		var i = player.colors[color_id]
 		for j in i:
 			j.hide()
-	if is_multiplayer_authority():
-		player.color = Events.collor_to_instanciate
-
-
 
 @rpc("call_local")
 func boost_particals():
@@ -105,10 +101,6 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("turn"):
 		server_rotation += turnConstant * turnDirection * delta
-	
-	if not multiplayer.is_server() || Lobby.host_mode_enabled == true:
-		pass
-
 
 func _on_amorecharge_timeout():
 	if player.amo >= 3: return
