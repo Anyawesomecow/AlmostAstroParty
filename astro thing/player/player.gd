@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+var dead = false
 var is_noodle = false
 var angleBefore = 0
 var speed = 200
@@ -10,8 +10,9 @@ var defaultBurtAmount = 50
 var defaultBurtAmountBurst = 100
 var do_boost_visuals = false
 var stop_boost_visuals = false
+@export var score = 0
 @export var amo = 3
-@export var color = Events.collor_to_instanciate
+@export var color = "unassigned"
 @onready var bullet = preload("res://player/bullet.tscn")
 @onready var leval = get_tree().get_root().get_node("leval_debug")
 @onready var colors = {
@@ -89,10 +90,23 @@ func _on_denoodling_timeout(): # un noodling
 
 	is_noodle = false
 
+func die(hitter):
+	print("fluig")
+	if hitter == player_id:
+		score -= 1
+		print(hitter)
+		print(player_id)
+		print(score)
+	else:
+		%PlayerInput.change_score.rpc(hitter)
+	dead = true
+	position = Vector2(999999999999999999, 999999999999999999)
 
 func _on_area_2d_area_entered(area): # getting hit stuff
+	var hitter = area.get_parent()
+	
 	if is_noodle == true:
-		queue_free()
+		die(hitter.id)
 	else:
 		$dashCooldown.stop()
 		$denoodling.start()
@@ -128,40 +142,40 @@ func _input(event):
 func _physics_process(delta):
 	
 	
-	
-	var collisionInfo = move_and_collide(velocity * delta)
-	
-	if do_boost_visuals == true:
-		boostVisuals()
-		do_boost_visuals = false
-	
-	if stop_boost_visuals == true:
-		_on_dash_cooldown_timeout_visuals()
-		stop_boost_visuals = false
-	
-	if Input.is_action_just_pressed("turn"):
-		if dashTimer.time_left > 0 and dashCooldown.time_left == 0 and is_noodle == false:
-			dash()
-		else:
-			angleBefore = rotation
-			dashTimer.start()
-	
-	rotation = %PlayerInput.server_rotation
-	
-	if collisionInfo:
-		velocity = velocity.slide(collisionInfo.get_normal())
+	if !dead:
+		var collisionInfo = move_and_collide(velocity * delta)
 		
-	if is_noodle == false:
-			velocity = Vector2(lerp(velocity.x, cos(rotation) * speed, delta * .6), lerp(velocity.y, sin(rotation) * speed, delta * .6))
-	else:
-		if Input.is_action_pressed("shoot"):
-			velocity = Vector2(lerp(velocity.x, cos(rotation) * speed, delta * .6), lerp(velocity.y, sin(rotation) * speed, delta * .6))
+		if do_boost_visuals == true:
+			boostVisuals()
+			do_boost_visuals = false
+		
+		if stop_boost_visuals == true:
+			_on_dash_cooldown_timeout_visuals()
+			stop_boost_visuals = false
+		
+		if Input.is_action_just_pressed("turn"):
+			if dashTimer.time_left > 0 and dashCooldown.time_left == 0 and is_noodle == false:
+				dash()
+			else:
+				angleBefore = rotation
+				dashTimer.start()
+		
+		rotation = %PlayerInput.server_rotation
+		
+		if collisionInfo:
+			velocity = velocity.slide(collisionInfo.get_normal())
 			
-	if velocity.x > 0 or velocity.x < 0:
-		velocity.x = lerp(velocity.x, float(0), delta * .8)
-		
-	if velocity.y > 0 or velocity.y < 0:
-		velocity.y = lerp(velocity.y, float(0), delta * .8)
-		
-	position = Vector2(wrapf(position.x, 0, SIZE.x), wrapf(position.y, 0, SIZE.y))
+		if is_noodle == false:
+				velocity = Vector2(lerp(velocity.x, cos(rotation) * speed, delta * .6), lerp(velocity.y, sin(rotation) * speed, delta * .6))
+		else:
+			if Input.is_action_pressed("shoot"):
+				velocity = Vector2(lerp(velocity.x, cos(rotation) * speed, delta * .6), lerp(velocity.y, sin(rotation) * speed, delta * .6))
+				
+		if velocity.x > 0 or velocity.x < 0:
+			velocity.x = lerp(velocity.x, float(0), delta * .8)
+			
+		if velocity.y > 0 or velocity.y < 0:
+			velocity.y = lerp(velocity.y, float(0), delta * .8)
+			
+		position = Vector2(wrapf(position.x, 0, SIZE.x), wrapf(position.y, 0, SIZE.y))
 

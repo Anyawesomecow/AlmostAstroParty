@@ -35,10 +35,11 @@ func boostVisuals(): # change particals when boosting
 
 @rpc("call_local")
 func shoot():
-	if player.amo > 0 and player.is_noodle == false and multiplayer.is_server() and multiplayer.get_remote_sender_id() == player.player_id:
+	if player.amo > 0 and player.is_noodle == false and multiplayer.is_server() and multiplayer.get_remote_sender_id() == player.player_id and !player.dead:
 		var bullet_ready = player.bullet.instantiate()
 		bullet_ready.position = player.position + Vector2(cos(player.rotation) * 20, sin(player.rotation) * 20)
 		bullet_ready.rotation = player.rotation
+		bullet_ready.id = player.player_id
 		var bullet_holder = player.leval.get_node("bullet_holder")
 		bullet_holder.add_child(bullet_ready, true)
 		player.shootSound.play()
@@ -73,6 +74,11 @@ func shipcolor():
 	if multiplayer.get_unique_id() == player.player_id:
 		for i in player.colors[player.color]:
 			i.show()
+
+@rpc("call_local")
+func change_score(hitter):
+	if multiplayer.is_server():
+		pass # RAJA HERE TOO PLZ
 
 @rpc("call_local")
 func hide_extranuis_ships():

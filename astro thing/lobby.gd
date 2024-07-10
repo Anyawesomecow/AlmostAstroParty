@@ -20,12 +20,13 @@ const COLORS = {
 
 	}
 }
-
 # other players player info
-var clients = {}
+var clients = {
+	
+}
 
 # local player info
-var player_info = {"name": null, "color": "unassigned"}
+var player_info = {"name": null, "color": "unassigned", "score": null} # RAJA MAKKE THIS WORK ILL GIVE YOU HEAD PLEAZZZZE
 
 signal player_connected(id: int, info: Dictionary)
 signal player_disconnected(id: int)
@@ -59,6 +60,12 @@ func get_client_name(client_id: int) -> String:
 	if client == null || !client.has("info") || !client.info.has("name"):
 		return "unknown"
 	return client.info.name
+	
+func get_client_color(client_id: int) -> String:
+	var client = get_client(client_id)
+	if client == null || !client.has("info") || !client.info.has("color"):
+		return "unassigned"
+	return client.info.color
 
 func get_available_colors():
 	var available_colors = COLORS.keys()
