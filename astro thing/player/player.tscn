@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dxsa1l6upmplg"]
+[gd_scene load_steps=45 format=3 uid="uid://dxsa1l6upmplg"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_cqx27"]
 [ext_resource type="Script" path="res://player/player_input.gd" id="2_7p6yb"]
@@ -9,11 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cpr8w4d86n1nx" path="res://player/textures/Green_Ship_Animated.png" id="7_2crpc"]
 [ext_resource type="Texture2D" uid="uid://y2s3wnwhuhns" path="res://player/textures/green_ship_blue_animated.png" id="8_3f1rm"]
 [ext_resource type="Texture2D" uid="uid://d0pdt8ol7ukv2" path="res://player/textures/Green_Noodle.png" id="9_vcm3j"]
-[ext_resource type="Texture2D" uid="uid://bi6gf3gbsuj1w" path="res://player/textures/Red_Ship_Animated.png" id="10_rs3cw"]
-[ext_resource type="Texture2D" uid="uid://btsy66ml64kxj" path="res://player/textures/Red_Ship_Blue_Animated.png" id="11_y8svf"]
 [ext_resource type="Texture2D" uid="uid://chnykpqt4i7ms" path="res://player/textures/Red_Noodle.png" id="12_qix2r"]
-[ext_resource type="Texture2D" uid="uid://bcu3k7mo5l1m8" path="res://player/textures/Blue_Ship_Animated.png" id="13_2dpvy"]
-[ext_resource type="Texture2D" uid="uid://c0g0gnt0c6qsj" path="res://player/textures/Blue_Ship_Blue_Animated.png" id="14_styhx"]
 [ext_resource type="Texture2D" uid="uid://bsrs8pyakmqcs" path="res://player/textures/Blue_Noodle.png" id="15_tdsix"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vulvy"]
@@ -209,11 +205,9 @@ animations = [{
 gradient = SubResource("Gradient_g1hmv")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1dlt"]
-atlas = ExtResource("10_rs3cw")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3hkpm"]
-atlas = ExtResource("10_rs3cw")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d3k7h"]
@@ -231,11 +225,9 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xldx"]
-atlas = ExtResource("11_y8svf")
 region = Rect2(0, 0, 32, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8m5tq"]
-atlas = ExtResource("11_y8svf")
 region = Rect2(32, 0, 32, 36)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wi1x0"]
@@ -253,11 +245,9 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_evwlx"]
-atlas = ExtResource("13_2dpvy")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xuq4a"]
-atlas = ExtResource("13_2dpvy")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ufkj5"]
@@ -275,11 +265,9 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xkb70"]
-atlas = ExtResource("14_styhx")
 region = Rect2(0, 0, 32, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_73die"]
-atlas = ExtResource("14_styhx")
 region = Rect2(32, 0, 32, 36)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ssdeu"]

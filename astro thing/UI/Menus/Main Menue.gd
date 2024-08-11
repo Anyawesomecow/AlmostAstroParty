@@ -1,10 +1,14 @@
 extends Control
 @onready var startButton = $VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Start
+@onready var ip = $VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ip
 @onready var joinButton = $VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Join
 @onready var settingsButton = $VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/settings
 @onready var hostButton = $VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/host
 
 const CHARACTER_SELECT_SCENE = "res://UI/Menus/charecterSelection.tscn"
+const CONFIG_PATH = "user://user.cfg"
+
+var config = ConfigFile.new()
 
 func _ready(): # Called when the node enters the scene tree for the first time. lets you use tab and enter in menue
 	if Events.username == null:
@@ -14,14 +18,18 @@ func _ready(): # Called when the node enters the scene tree for the first time. 
 		$"name window".hide()
 		$VBoxContainer.show()
 	startButton.grab_focus()
+	ip.hide()
 	joinButton.hide()
 	settingsButton.hide()
 	hostButton.hide()
 	$OptionsMenu.hide()
+	config.load(CONFIG_PATH)
+	$"name window/VBoxContainer/TextEdit".text = config.get_value("user", "username", "")
 
 func _on_start_pressed():# starts game
 	startButton.hide()
 	joinButton.show()
+	ip.show()
 	joinButton.grab_focus()
 	settingsButton.show()
 	hostButton.show()
@@ -32,7 +40,7 @@ func _input(event):
 		$OptionsMenu.hide()
 
 func _on_join_pressed():
-	Lobby.join_game()
+	Lobby.join_game(ip.text)
 	# $VBoxContainer.hide()
 
 func _on_settings_pressed():
@@ -50,3 +58,5 @@ func _on_button_pressed():
 		Lobby.player_info.name = Events.username
 		$"name window".hide()
 		$VBoxContainer.show()
+		config.set_value("user", "username", Events.username)
+		config.save(CONFIG_PATH)

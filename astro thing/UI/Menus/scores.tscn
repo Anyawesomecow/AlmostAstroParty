@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqenokumeatl3"]
+
+[ext_resource type="Script" path="res://UI/Menus/scores.gd" id="1_bnyd7"]
+
+[node name="Scores" type="Node2D"]
+script = ExtResource("1_bnyd7")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 17.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

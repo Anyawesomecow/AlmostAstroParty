@@ -7,22 +7,13 @@ const MAIN_MENU_SCENE = "res://UI/Menus/Main Menue.tscn"
 const PLAYER_SCENE = preload("res://player/player.tscn")
 
 const COLORS = {
-	purple = {
-
-	},
-	green = {
-
-	},
-	blue = {
-
-	},
-	red = {
-
-	}
+	purple = {},
+	green = {},
+	blue = {},
+	red = {}
 }
 # other players player info
 var clients = {
-	
 }
 
 # local player info
@@ -44,7 +35,8 @@ func debug(str):
 	if multiplayer.multiplayer_peer == null:
 		return
 	var id = multiplayer.get_unique_id()
-	print("[peer {id}] {str}".format({"id": id, "str": str}))
+	var client = clients[id]
+	print("[peer {id} - \"{name}\"] {str}".format({"id": id, "name": client.info.name, "str": str}))
 
 func get_or_create_client(id: int):
 	if clients.has(id):
@@ -54,6 +46,11 @@ func get_or_create_client(id: int):
 
 func get_client(id: int):
 	return clients.get(id)
+
+func get_client_instance(id: int):
+	var client = get_client(id)
+	if !client: return null
+	return client.instance
 
 func get_client_name(client_id: int) -> String:
 	var client = get_client(client_id)
@@ -121,6 +118,34 @@ func create_game():
 	var client = get_or_create_client(1)
 	client.info = player_info
 	player_connected.emit(1, player_info)
+
+@rpc("authority", "call_local", "reliable")
+func update_client_score(client_id: int, new_score: int):
+	var client = get_client(client_id)
+	if !client: return
+	client.score = new_score
+
+func check_standings():
+	if !multiplayer.is_server(): return
+	var standing = 0
+	for client_id in clients:
+		var client = get_client(client_id)
+		if client:
+			var instance = client.instance
+			if instance:
+				update_client_score.rpc(client_id, instance.score)
+			if !client.get("dead"):
+				standing += 1
+				if standing > 1:
+					return
+	change_scene.rpc("res://UI/Menus/scores.tscn")
+
+func kill_player(id: int):
+	if !multiplayer.is_server(): return
+	var client = get_client(id)
+	if !client: return
+	client.dead = true
+	check_standings()
 	
 func disconnect_peer():
 	multiplayer.multiplayer_peer = null
@@ -192,6 +217,7 @@ func _register_player(info):
 		client.info = {}
 	client.info.name = info.name
 	client.info.color = info.color # someone could probably exploit this to claim two colors
+	client.info.score = 0
 	if client.info.color == null:
 		client.info.color = "unassigned"
 	player_connected.emit(client_id, info)

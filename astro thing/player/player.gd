@@ -45,6 +45,11 @@ func shipcolor():
 func _ready(): # onreadythings
 	%PlayerInput.hide_extranuis_ships.rpc()
 	%PlayerInput.shipcolor.rpc()
+
+	var client = Lobby.get_client(player_id)
+	if client:
+		score = client.get("score", 0)
+		client.dead = false
 	
 	for color_id in colors:
 		var i = colors[color_id]
@@ -91,14 +96,16 @@ func _on_denoodling_timeout(): # un noodling
 	is_noodle = false
 
 func die(hitter):
-	print("fluig")
-	if hitter == player_id:
-		score -= 1
-		print(hitter)
-		print(player_id)
-		print(score)
-	else:
-		%PlayerInput.change_score.rpc(hitter)
+	Lobby.debug("{player}: umm died?: {hitter}".format({ "player": player_id, "hitter": hitter }))
+	if multiplayer.is_server():
+		if hitter == player_id:
+			score -= 1
+			Lobby.debug("new player score: {score}".format({ "score": score }))
+		else:
+			var client = Lobby.clients[hitter]
+			client.instance.score += 1
+			Lobby.debug("new peer score: peer {peer} ({username}) to {score}".format({ "peer": hitter, "username": client.info.name, "score": client.instance.score }))
+		Lobby.kill_player(player_id)
 	dead = true
 	position = Vector2(999999999999999999, 999999999999999999)
 

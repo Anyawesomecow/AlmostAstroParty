@@ -40,7 +40,7 @@ func shoot():
 		bullet_ready.position = player.position + Vector2(cos(player.rotation) * 20, sin(player.rotation) * 20)
 		bullet_ready.rotation = player.rotation
 		bullet_ready.id = player.player_id
-		var bullet_holder = player.leval.get_node("bullet_holder")
+		var bullet_holder = player.get_parent().get_parent().get_node("bullet_holder")
 		bullet_holder.add_child(bullet_ready, true)
 		player.shootSound.play()
 		$"../amorecharge".start()
@@ -74,11 +74,6 @@ func shipcolor():
 	if multiplayer.get_unique_id() == player.player_id:
 		for i in player.colors[player.color]:
 			i.show()
-
-@rpc("call_local")
-func change_score(hitter):
-	if multiplayer.is_server():
-		pass # RAJA HERE TOO PLZ
 
 @rpc("call_local")
 func hide_extranuis_ships():
