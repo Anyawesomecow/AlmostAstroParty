@@ -26,4 +26,3 @@ func get_rand_leavel():
 func _on_timer_timeout():
 	if !multiplayer.is_server(): return
 	Lobby.change_scene.rpc(get_rand_leavel())
-

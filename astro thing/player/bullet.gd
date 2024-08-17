@@ -19,5 +19,3 @@ func _physics_process(delta):# screenwrap and move
 
 func _on_area_2d_area_entered(wall): #deleats self when hit
 	self.queue_free()
-
-

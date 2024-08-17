@@ -82,4 +82,3 @@ func _update_action_list(button, event):
 
 func _on_rester_pressed():
 	create_action_list()
-

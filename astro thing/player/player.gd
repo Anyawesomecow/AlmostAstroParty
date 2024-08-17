@@ -185,4 +185,3 @@ func _physics_process(delta):
 			velocity.y = lerp(velocity.y, float(0), delta * .8)
 			
 		position = Vector2(wrapf(position.x, 0, SIZE.x), wrapf(position.y, 0, SIZE.y))
-
