@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bvobw60cr8xuo"]
 
-[ext_resource type="Script" path="res://UI/Menus/Options_menu.gd" id="1_clpl0"]
-[ext_resource type="Script" path="res://UI/Menus/Master_volume.gd" id="2_hgsc6"]
-[ext_resource type="Script" path="res://UI/Menus/music.gd" id="3_d5qbu"]
-[ext_resource type="Script" path="res://UI/Menus/sfx.gd" id="4_fcseb"]
+[ext_resource type="Script" uid="uid://bpccfijie00r4" path="res://UI/Menus/Options_menu.gd" id="1_clpl0"]
+[ext_resource type="Script" uid="uid://drgmcrdcl5yry" path="res://UI/Menus/Master_volume.gd" id="2_hgsc6"]
+[ext_resource type="Script" uid="uid://dwpqua773f4ig" path="res://UI/Menus/music.gd" id="3_d5qbu"]
+[ext_resource type="Script" uid="uid://crs3qhs4pc8lq" path="res://UI/Menus/sfx.gd" id="4_fcseb"]
 
 [node name="OptionsMenu" type="Control"]
 process_mode = 3

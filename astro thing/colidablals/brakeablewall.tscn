@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c0ggfi8fqjytl"]
 
 [ext_resource type="Texture2D" uid="uid://bolekku2arck" path="res://UI/textures/weird Kam picture.png" id="1_1qavf"]
-[ext_resource type="Script" path="res://colidablals/brakeablewall.gd" id="1_qpfgn"]
+[ext_resource type="Script" uid="uid://bnxhrma28kcy6" path="res://colidablals/brakeablewall.gd" id="1_qpfgn"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1y5mb"]
 properties/0/path = NodePath(".:position")

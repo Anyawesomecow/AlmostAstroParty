@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://b0yxpjlkwwg6p"]
 
-[ext_resource type="Script" path="res://UI/Menus/Main Menue.gd" id="1_dn3mb"]
+[ext_resource type="Script" uid="uid://cnsy2nu2tfa8x" path="res://UI/Menus/Main Menue.gd" id="1_dn3mb"]
 [ext_resource type="Theme" uid="uid://dqt8ckud00u6" path="res://UI/new_theme.tres" id="2_wlpdl"]
 [ext_resource type="AudioStream" uid="uid://c6htprld4rcik" path="res://audio/astroparty menue music.mp3" id="3_0at6g"]
 [ext_resource type="PackedScene" uid="uid://bvobw60cr8xuo" path="res://UI/Menus/Options_menu.tscn" id="4_4es18"]
@@ -148,7 +148,7 @@ size_flags_vertical = 2
 text = "Create"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://UI/Menus/charecterSelection.tscn")
+_spawnable_scenes = PackedStringArray("uid://ctcq8wmlla6vp")
 spawn_path = NodePath(".")
 
 [connection signal="pressed" from="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]

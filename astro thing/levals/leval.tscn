@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d25ljayjqylli"]
 
-[ext_resource type="Script" path="res://levals/leval.gd" id="1_j454r"]
+[ext_resource type="Script" uid="uid://pfji83yh0hrk" path="res://levals/leval.gd" id="1_j454r"]
 [ext_resource type="PackedScene" uid="uid://bx0812o0vjn0j" path="res://colidablals/wall 1.tscn" id="2_nmrh1"]
 [ext_resource type="Texture2D" uid="uid://btnt1on62x4dq" path="res://levals/textures/background for wallpaper.png" id="4_2jium"]
 

@@ -1,12 +1,13 @@
 [gd_scene load_steps=45 format=3 uid="uid://dxsa1l6upmplg"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_cqx27"]
-[ext_resource type="Script" path="res://player/player_input.gd" id="2_7p6yb"]
+[ext_resource type="Script" uid="uid://dncpqiii3owrp" path="res://player/player.gd" id="1_cqx27"]
+[ext_resource type="Script" uid="uid://c2muvbhohhamp" path="res://player/player_input.gd" id="2_7p6yb"]
 [ext_resource type="Texture2D" uid="uid://lh5qiucwhwuw" path="res://player/textures/purple_ship_animated.png" id="4_1xqgg"]
 [ext_resource type="Texture2D" uid="uid://ckd4k0h2sfumq" path="res://player/textures/Purple_Ship_Blue_Animated.png" id="5_30xp1"]
 [ext_resource type="AudioStream" uid="uid://g0y7poortp5h" path="res://player/shoot noise.mp3" id="5_t4ea3"]
 [ext_resource type="Texture2D" uid="uid://4k3aarp23v4v" path="res://player/textures/Noodle.png" id="6_kfcrk"]
 [ext_resource type="Texture2D" uid="uid://cpr8w4d86n1nx" path="res://player/textures/Green_Ship_Animated.png" id="7_2crpc"]
+[ext_resource type="Material" uid="uid://c8ow7xj7cfdcc" path="res://particle_shader.tres" id="7_ebec5"]
 [ext_resource type="Texture2D" uid="uid://y2s3wnwhuhns" path="res://player/textures/green_ship_blue_animated.png" id="8_3f1rm"]
 [ext_resource type="Texture2D" uid="uid://d0pdt8ol7ukv2" path="res://player/textures/Green_Noodle.png" id="9_vcm3j"]
 [ext_resource type="Texture2D" uid="uid://chnykpqt4i7ms" path="res://player/textures/Red_Noodle.png" id="12_qix2r"]
@@ -92,8 +93,7 @@ properties/10/spawn = true
 properties/10/replication_mode = 1
 
 [sub_resource type="Curve" id="Curve_bb2o5"]
-min_value = -200.0
-max_value = 200.0
+_limits = [-200.0, 200.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.994382, 200), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -148,12 +148,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4w38y"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 0, 0)
-scale_min = 0.01
-scale_max = 0.01
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aa06u"]
 atlas = ExtResource("7_2crpc")
@@ -420,7 +414,7 @@ texture = ExtResource("6_kfcrk")
 [node name="noodle_particals" type="Node2D" parent="Purp"]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Purp/noodle_particals"]
-process_material = SubResource("ParticleProcessMaterial_4w38y")
+process_material = ExtResource("7_ebec5")
 
 [node name="Green" type="Node2D" parent="."]
 
@@ -444,8 +438,8 @@ texture = ExtResource("9_vcm3j")
 [node name="noodle_particals" type="Node2D" parent="Green"]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Green/noodle_particals"]
-process_material = SubResource("ParticleProcessMaterial_4w38y")
 texture = SubResource("GradientTexture1D_0eolc")
+process_material = ExtResource("7_ebec5")
 
 [node name="Red" type="Node2D" parent="."]
 
@@ -468,7 +462,7 @@ texture = ExtResource("12_qix2r")
 [node name="noodle_particals" type="Node2D" parent="Red"]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Red/noodle_particals"]
-process_material = SubResource("ParticleProcessMaterial_4w38y")
+process_material = ExtResource("7_ebec5")
 
 [node name="Blue" type="Node2D" parent="."]
 
@@ -491,7 +485,7 @@ texture = ExtResource("15_tdsix")
 [node name="noodle_particals" type="Node2D" parent="Blue"]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Blue/noodle_particals"]
-process_material = SubResource("ParticleProcessMaterial_4w38y")
+process_material = ExtResource("7_ebec5")
 
 [connection signal="timeout" from="dashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="amorecharge" to="PlayerInput" method="_on_amorecharge_timeout"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ci23c6rfwgyd0"]
 
-[ext_resource type="Script" path="res://levals/leval.gd" id="1_iq1er"]
+[ext_resource type="Script" uid="uid://pfji83yh0hrk" path="res://levals/leval.gd" id="1_iq1er"]
 [ext_resource type="Texture2D" uid="uid://43rrtu2k0pjn" path="res://colidablals/textures/astro_wall_tiles.png" id="2_4k6st"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vquuj"]
